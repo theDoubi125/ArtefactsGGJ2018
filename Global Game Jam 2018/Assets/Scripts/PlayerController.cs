@@ -9,23 +9,22 @@ public class PlayerController : MonoBehaviour
     public Vector2 direction = Vector2.right;
 
     private string playerInputPrefix;
-    private Rigidbody2D body;
+    private Rigidbody body;
 
 	void Start ()
     {
         playerInputPrefix = "Player" + playerIndex + "_";
-        body = GetComponent<Rigidbody2D>();
+        body = GetComponent<Rigidbody>();
 	}
 	
-	// Update is called once per frame
 	void Update ()
     {
-        body.AddForce(acceleration * new Vector2(Input.GetAxis(playerInputPrefix + "Move_X"), Input.GetAxis(playerInputPrefix + "Move_Y")));
-        Vector2 direction = new Vector2(Input.GetAxis(playerInputPrefix + "Look_X"), Input.GetAxis(playerInputPrefix + "Look_Y"));
-        float angle = Vector2.Angle(Vector2.right, direction);
-        if (Vector3.Cross(new Vector3(direction.x, direction.y, 0), Vector3.right).z > 0)
+        body.AddForce(acceleration * new Vector3(Input.GetAxis(playerInputPrefix + "Move_X"), 0, Input.GetAxis(playerInputPrefix + "Move_Y")));
+        Vector3 direction = new Vector3(Input.GetAxis(playerInputPrefix + "Look_X"), 0, Input.GetAxis(playerInputPrefix + "Look_Y"));
+        float angle = Vector3.Angle(Vector2.right, direction);
+        if (direction.z < 0)
             angle *= -1;
-        Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.back);
+        Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.up);
         if(direction.sqrMagnitude > 0)
             transform.SetPositionAndRotation(transform.position, rotation);
 	}
