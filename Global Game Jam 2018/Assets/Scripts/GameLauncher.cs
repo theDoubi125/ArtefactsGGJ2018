@@ -11,3 +11,4 @@ public class GameLauncher : MonoBehaviour {
         SceneManager.LoadScene(gameSceneName, LoadSceneMode.Single);
     }
 }
+ 
