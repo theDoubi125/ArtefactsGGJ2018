@@ -29,7 +29,6 @@ public class ActionController : MonoBehaviour
         }
         if (dashReloadTime > 0)
             dashReloadTime -= Time.deltaTime;
-        Ray ray = new Ray();
         if (Physics.Raycast(transform.position, Vector3.down, groundDetectionRange) && Input.GetButtonDown(player.GetPlayerInputPrefix() + "Jump"))
         {
             body.AddForce(transform.up * jumpForce.y + transform.right * jumpForce.x, ForceMode.VelocityChange);

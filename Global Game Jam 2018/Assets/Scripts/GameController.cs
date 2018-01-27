@@ -5,39 +5,18 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     public static GameController instance;
-	public List<Ammunition> ammunitions;
-	public int initialAmmo = 3;
-    public List<PlayerController> players;
 
     public List<int> controllers;
-
-	public List<GameObject> ammoObjects;
 
 	// Use this for initialization
 	void Awake ()
 	{
         instance = this;
-		foreach (Ammunition ammo in ammunitions) {
-			GameObject tmp = new GameObject ();
-			tmp.AddComponent (ammo.GetType ());
-			ammoObjects.Add (tmp);
-		}
 	}
 
 	void Start ()
 	{
         DontDestroyOnLoad(gameObject);
-		for (int i = 0; i < initialAmmo; i++)
-        {
-			int rdm = Random.Range (0, ammunitions.Count - 1);
-			foreach (PlayerController player in players)
-            {
-				WeaponController weapon = player.GetComponent<WeaponController> ();
-				GameObject tmp = Instantiate (ammoObjects [rdm]);
-				tmp.transform.SetParent (player.transform);
-				weapon.magazine.Add (tmp);
-			}
-		}
 	}
 
 	// Update is called once per frame
@@ -45,6 +24,11 @@ public class GameController : MonoBehaviour
 	{
 		
 	}
+
+    public bool IsPlayerControlled(int playerIndex)
+    {
+        return controllers.Count > playerIndex;
+    }
 
     public string GetPlayerControllerInputPrefix(int controllerIndex)
     {

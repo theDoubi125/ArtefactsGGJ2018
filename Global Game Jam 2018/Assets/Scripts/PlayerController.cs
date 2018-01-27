@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour
 
 	void Start ()
     {
+        if (!GameController.instance.IsPlayerControlled(playerIndex))
+            gameObject.SetActive(false);
         playerInputPrefix = GameController.instance.GetPlayerInputPrefix(playerIndex);
         body = GetComponent<Rigidbody>();
         animationController = GetComponent<CharacterAnimation>();
@@ -34,6 +36,7 @@ public class PlayerController : MonoBehaviour
 	
 	void Update ()
     {
+        Debug.Log(playerInputPrefix);
         body.AddForce(acceleration * (new Vector3(Input.GetAxis(playerInputPrefix + "Move_X"), 0, Input.GetAxis(playerInputPrefix + "Move_Y"))).normalized);
         Vector3 targetDirection = new Vector3(Input.GetAxis(playerInputPrefix + "Look_X"), 0, -Input.GetAxis(playerInputPrefix + "Look_Y"));
         if (targetDirection.sqrMagnitude > directionMinLength * directionMinLength)
@@ -41,7 +44,8 @@ public class PlayerController : MonoBehaviour
             currentTargetDirection = targetDirection;
             weaponDirection = currentTargetDirection.normalized;
         }
-        cursor.transform.position = transform.position + weaponDirection * cursorDistance;
+        if(cursor != null)
+            cursor.transform.position = transform.position + weaponDirection * cursorDistance;
         Vector3 direction = body.velocity.normalized;
         if (body.velocity.sqrMagnitude > minSpeedForRot * minSpeedForRot)
         {
