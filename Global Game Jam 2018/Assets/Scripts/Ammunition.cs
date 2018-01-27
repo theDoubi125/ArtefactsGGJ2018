@@ -22,6 +22,8 @@ public class Ammunition : MonoBehaviour
 	//TODO : Add graph variables
 	public Transform billboardApparence;
 
+    private AmmunitionBonus AmmoBonus;
+
 	void Start()
 	{
 		switch (behaviorchoice)
@@ -43,6 +45,7 @@ public class Ammunition : MonoBehaviour
 			default:
 				break;
 		}
+        AmmoBonus = GetComponent<AmmunitionBonus>();
 	}
 
 	void Update()
@@ -55,7 +58,7 @@ public class Ammunition : MonoBehaviour
 				{
 					ChangeToBillboard();
 				}
-				GetComponent<AmmunitionBonus>().ApplyMalus(shooter);
+                AmmoBonus.ApplyMalus(shooter);
 			}
 			else
 			{

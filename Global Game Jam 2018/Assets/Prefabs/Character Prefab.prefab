@@ -138,6 +138,7 @@ GameObject:
   - component: {fileID: 33024074060151060}
   - component: {fileID: 114398889636820084}
   - component: {fileID: 114032929274427880}
+  - component: {fileID: 114395518556250324}
   m_Layer: 0
   m_Name: Character Prefab
   m_TagString: Untagged
@@ -676,6 +677,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd3d522f4c4f70843819e564c3b04f5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114395518556250324
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1744204026639706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5fa964cdb2a46c49977cbd5ae38c280, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHP: 100
+  maxHP: 100
+  minHP: 0
 --- !u!114 &114398889636820084
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -723,19 +738,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 4768133177856040, guid: 68891ac949d7194429bb52487c83339d,
     type: 2}
-  magazine:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  magazine: []
   maxCapacity: 3
-  ammunitions: []
+  ammunitions:
+  - {fileID: 114965008342062246, guid: e24f1e8bdc40ba0469fa748aff1d6aff, type: 2}
   player: {fileID: 0}
 --- !u!135 &135360464440530286
 SphereCollider:

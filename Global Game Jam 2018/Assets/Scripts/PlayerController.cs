@@ -52,7 +52,6 @@ public class PlayerController : MonoBehaviour
         }
 
         float deltaAngle = Quaternion.Angle(currentRotation, targetRotation);
-        Debug.Log(deltaAngle);
         currentRotation = Quaternion.RotateTowards(currentRotation, targetRotation, rotSpeed * Time.deltaTime); 
         transform.SetPositionAndRotation(transform.position, currentRotation);
 
