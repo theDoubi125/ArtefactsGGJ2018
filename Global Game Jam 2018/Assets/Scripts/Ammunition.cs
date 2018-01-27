@@ -18,8 +18,11 @@ public class Ammunition : MonoBehaviour
 	public AmmunitionBehavior behavior;
 	[HideInInspector]
 	public AmmunitionBonus bonus;
-	public int PlayerId;
+	public PlayerController shooter;
 	//TODO : Add graph variables
+	public Transform billboardApparence;
+
+    private AmmunitionBonus AmmoBonus;
 
 	void Start()
 	{
@@ -42,6 +45,7 @@ public class Ammunition : MonoBehaviour
 			default:
 				break;
 		}
+        AmmoBonus = GetComponent<AmmunitionBonus>();
 	}
 
 	void Update()
@@ -50,7 +54,11 @@ public class Ammunition : MonoBehaviour
 		{
 			if (!behavior.hitPlayer)
 			{
-				ChangeToCrate();
+				if (GetComponent<Rigidbody>() != null)
+				{
+					ChangeToBillboard();
+				}
+                AmmoBonus.ApplyMalus(shooter);
 			}
 			else
 			{
@@ -61,13 +69,25 @@ public class Ammunition : MonoBehaviour
 
 	void ApplyDamage()
 	{
-		//TODO : implement HealthController
-		//behavior.hitPlayer.gameObject.GetComponent<HealthController>().Hit(this);
-		behavior.hitPlayer.gameObject.GetComponent<WeaponController>().Hit();
+		behavior.hitPlayer.gameObject.GetComponent<HealthController>().Hit(this);
+		behavior.hitPlayer.gameObject.GetComponent<WeaponController>().HarvestCrate(this);
 	}
 
-	void ChangeToCrate()
+	void ChangeToBillboard()
 	{
-		bonus.ApplyMalus();
+		DestroyObject(GetComponent<Rigidbody>());
+		GetComponent<Collider>().isTrigger = true;
+		//TODO : Change apparence
+	}
+
+	void OnTriggerEnter (Collider col)
+	{
+		PlayerController tmp = col.GetComponent<PlayerController>();
+		if (tmp != null)
+		{
+			tmp.GetComponent<WeaponController>().HarvestCrate(this);
+			//TODO : Play SFX
+			Destroy(gameObject);
+		}
 	}
 }

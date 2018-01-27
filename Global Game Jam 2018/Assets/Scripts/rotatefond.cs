@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestAmmunitionBonus : AmmunitionBonus {
-
+public class rotatefond: MonoBehaviour {
+	public float rotSpeed;
 	// Use this for initialization
 	void Start () {
 		
@@ -11,14 +11,6 @@ public class TestAmmunitionBonus : AmmunitionBonus {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
-
-	override public void ApplyBonus ()
-	{
-	}
-
-	override public void ApplyMalus ()
-	{
+		transform.RotateAround (transform.localPosition, Vector3.up, rotSpeed * Time.deltaTime);
 	}
 }

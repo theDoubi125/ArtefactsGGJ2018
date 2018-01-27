@@ -4,6 +4,6 @@ using UnityEngine;
 
 public abstract class AmmunitionBonus : MonoBehaviour
 {
-	abstract public void ApplyBonus ();
-	abstract public void ApplyMalus ();
+	abstract public void ApplyBonus (PlayerController player);
+	abstract public void ApplyMalus (PlayerController player);
 }
