@@ -8,14 +8,17 @@ public class PlayerController : MonoBehaviour
     public int playerIndex = 1;
     public Vector2 direction = Vector2.right;
     public float directionMinLength = 0.5f;
+    public float maxSpeed = 5f;
 
     private string playerInputPrefix;
     private Rigidbody body;
+    private CharacterAnimation animationController;
 
 	void Start ()
     {
         playerInputPrefix = "Player" + playerIndex + "_";
         body = GetComponent<Rigidbody>();
+        animationController = GetComponent<CharacterAnimation>();
 	}
 	
 	void Update ()
@@ -28,6 +31,8 @@ public class PlayerController : MonoBehaviour
         Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.up);
         if(direction.sqrMagnitude > directionMinLength * directionMinLength)
             transform.SetPositionAndRotation(transform.position, rotation);
+
+        animationController.SetSpeedRatio(body.velocity.magnitude / maxSpeed);
 	}
 
     public string GetPlayerInputPrefix()
