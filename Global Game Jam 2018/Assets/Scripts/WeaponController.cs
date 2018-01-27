@@ -6,8 +6,7 @@ public class WeaponController : MonoBehaviour
 {
 	public Transform projectilePrefab;
 	public List<GameObject> magazine;
-	public int maxCapacity = 3;
-	public Ammunition[] ammunitions;
+	public int maxCapacity = 5;
 	public PlayerController player;
 
 	// Use this for initialization
@@ -15,12 +14,6 @@ public class WeaponController : MonoBehaviour
 	{
 		player = GetComponent<PlayerController>();
 		magazine.Capacity = maxCapacity;
-		for (int i = 0; i < maxCapacity; i++)
-		{
-			GameObject tmp = new GameObject();
-			tmp.AddComponent(ammunitions[Random.Range(0, ammunitions.Length)].GetType());
-			magazine.Add(tmp);
-		}
 	}
 
 	// Update is called once per frame
@@ -60,11 +53,12 @@ public class WeaponController : MonoBehaviour
 
 	public void HarvestCrate (Ammunition ammo)
 	{
-		Debug.Log("Crate harvested");
+//		Debug.Log("Crate harvested");
 		GameObject tmp = new GameObject();
 		tmp.AddComponent<Ammunition>();
 		tmp.GetComponent<Ammunition>().behaviorchoice = ammo.behaviorchoice;
 		tmp.GetComponent<Ammunition>().bonuschoice = ammo.bonuschoice;
+		tmp.transform.SetParent (transform);
 		magazine.Add(tmp);
 	}
 }
