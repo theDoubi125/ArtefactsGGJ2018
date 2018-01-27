@@ -4,15 +4,40 @@ ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Arrow
+    100004: Corp
+    100006: Camera
+    100008: Head_Root
+    100010: Lamp
+    100012: Player
     400000: //RootNode
+    400002: Arrow
+    400004: Corp
+    400006: Camera
+    400008: Head_Root
+    400010: Lamp
+    400012: Player
+    2000000: Camera
     2100000: No Name
     2300000: //RootNode
+    2300002: Arrow
+    2300004: Corp
     3300000: //RootNode
+    3300002: Arrow
+    3300004: Corp
     4300000: Corp
+    4300002: Arrow
     7400000: Corp|Head_RootAction
     7400002: Corp|Idle
     7400004: Corp|PlayerAction
+    7400006: Player|Head_RootAction
+    7400008: Player|Idle
+    7400010: Player|PlayerAction
+    7400012: Head_Root|Head_RootAction
+    7400014: Head_Root|Idle
+    7400016: Head_Root|PlayerAction
     9500000: //RootNode
+    10800000: Lamp
   externalObjects: {}
   materials:
     importMaterials: 1
