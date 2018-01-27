@@ -1,27 +1,17 @@
 fileFormatVersion: 2
-guid: 7811d687db142174ebdef9b8d9bbb3d4
+guid: d76e8b83a2ff50045a55cd27ff830171
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Corp
-    100004: Head_Root
     400000: //RootNode
-    400002: Corp
-    400004: Head_Root
     2100000: No Name
-    2300000: Corp
-    3300000: Corp
+    2300000: //RootNode
+    3300000: //RootNode
     4300000: Corp
-    7400000: Player|Head_RootAction
-    7400002: Player|Idle
-    7400004: Player|PlayerAction
-    7400006: Corp|Head_RootAction
-    7400008: Corp|Idle
-    7400010: Corp|PlayerAction
-    7400012: Head_Root|Head_RootAction
-    7400014: Head_Root|Idle
-    7400016: Head_Root|PlayerAction
+    7400000: Corp|Head_RootAction
+    7400002: Corp|Idle
+    7400004: Corp|PlayerAction
     9500000: //RootNode
   externalObjects: {}
   materials:

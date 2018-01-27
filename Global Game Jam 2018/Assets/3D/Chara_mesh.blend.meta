@@ -1,4 +1,12 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+guid: 9d5c03b3f6890d4498b323d2c06fa5ce
+timeCreated: 1517063175
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName: {}
+=======
 guid: 3e323034cdd8c22458d33ed37db0f883
 ModelImporter:
   serializedVersion: 22
@@ -15,6 +23,7 @@ ModelImporter:
     4300000: Corp
     7400000: Default Take
     9500000: //RootNode
+>>>>>>> 6551ba8c4386a80823fe3bad222408027da285f2
   externalObjects: {}
   materials:
     importMaterials: 1

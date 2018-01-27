@@ -17,7 +17,8 @@ public class AmmunitionBehavior : MonoBehaviour
 
 	virtual public void ApplyBehavior()
 	{
-        GetComponent<Rigidbody>().AddForce(transform.right*1000);
+		if (GetComponent<Rigidbody>() != null)
+        	GetComponent<Rigidbody>().AddForce(transform.right*1000);
 	}
 
 	virtual public void OnCollisionEnter(Collision col)
@@ -25,8 +26,8 @@ public class AmmunitionBehavior : MonoBehaviour
 		hitPlayer = col.collider.gameObject.GetComponent<PlayerController>();
 		//TODO : need to change this to be able to injure oneself by rebound, need to change the origin of the bullet to do so.
 		if (hitPlayer == null
-		    || hitPlayer.playerIndex != GetComponent<Ammunition>().PlayerId)
-		{
+			|| hitPlayer.playerIndex != GetComponent<Ammunition>().shooter.playerIndex)
+	{
 //			Debug.Log(hitPlayer + " | " + hitPlayer.playerIndex + " | " + GetComponent<Ammunition>().PlayerId);
 			this.enabled = false;
 		}
