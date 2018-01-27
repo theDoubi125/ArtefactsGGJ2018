@@ -68,7 +68,6 @@ public class Ammunition : MonoBehaviour
 
 	void ChangeToCrate()
 	{
-		Debug.Log("changetocrate");
 		bonus.ApplyMalus();
 	}
 }

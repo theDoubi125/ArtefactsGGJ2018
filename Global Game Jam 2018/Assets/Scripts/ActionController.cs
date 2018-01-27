@@ -24,6 +24,7 @@ public class ActionController : MonoBehaviour
         {
             body.AddForce(transform.right * dashForce, ForceMode.VelocityChange);
             dashReloadTime = dashReloadDuration;
+            GetComponent<CharacterAnimation>().Dash();
         }
         if (dashReloadTime > 0)
             dashReloadTime -= Time.deltaTime;
@@ -31,6 +32,7 @@ public class ActionController : MonoBehaviour
         if (Physics.Raycast(transform.position, Vector3.down, groundDetectionRange) && Input.GetButtonDown(player.GetPlayerInputPrefix() + "Jump"))
         {
             body.AddForce(transform.up * jumpForce.y + transform.right * jumpForce.x, ForceMode.VelocityChange);
+            GetComponent<CharacterAnimation>().Jump();
         }
 	}
 }
