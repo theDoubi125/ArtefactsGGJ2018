@@ -20,7 +20,8 @@ public class ActionController : MonoBehaviour
 	
 	void Update ()
     {
-        if (dashReloadTime <= 0 && Input.GetButtonDown(player.GetPlayerInputPrefix() + "Dash"))
+        string dashInputName = player.GetPlayerInputPrefix() + "Dash";
+        if (dashReloadTime <= 0 && Input.GetButtonDown(dashInputName))
         {
             body.AddForce(transform.right * dashForce, ForceMode.VelocityChange);
             dashReloadTime = dashReloadDuration;

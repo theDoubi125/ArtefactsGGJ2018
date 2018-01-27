@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    public static GameController instance;
 	public List<Ammunition> ammunitions;
 	public int initialAmmo = 3;
-	public List<PlayerController> players;
+    public List<PlayerController> players;
+
+    public List<int> controllers;
 
 	public List<GameObject> ammoObjects;
 
 	// Use this for initialization
 	void Awake ()
 	{
+        instance = this;
 		foreach (Ammunition ammo in ammunitions) {
 			GameObject tmp = new GameObject ();
 			tmp.AddComponent (ammo.GetType ());
@@ -22,6 +26,7 @@ public class GameController : MonoBehaviour
 
 	void Start ()
 	{
+        DontDestroyOnLoad(gameObject);
 		for (int i = 0; i < initialAmmo; i++) {
 			int rdm = Random.Range (0, ammunitions.Count - 1);
 			foreach (PlayerController player in players) {
@@ -38,4 +43,29 @@ public class GameController : MonoBehaviour
 	{
 		
 	}
+
+    public string GetPlayerControllerInputPrefix(int controllerIndex)
+    {
+        if (controllerIndex > 0)
+            return "Player" + controllerIndex + "_";
+        else
+            return "Keyboard" + "_";
+    }
+
+    public string GetPlayerInputPrefix(int playerIndex)
+    {
+        return GetPlayerControllerInputPrefix(controllers[playerIndex]);
+    }
+
+    public bool registerPlayer(int playerId)
+    {
+        for (int i = 0; i < controllers.Count; i++)
+        {
+            if (controllers[i] == playerId)
+                return false;
+        }
+        controllers.Add(playerId);
+        return true;
+    }
+
 }

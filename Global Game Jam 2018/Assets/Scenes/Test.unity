@@ -473,7 +473,7 @@ Prefab:
     - target: {fileID: 114619790106006984, guid: e6a1eae10f5f7974b9977eda8a626fc6,
         type: 2}
       propertyPath: playerIndex
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e6a1eae10f5f7974b9977eda8a626fc6, type: 2}
@@ -526,6 +526,11 @@ Prefab:
       propertyPath: cursor
       value: 
       objectReference: {fileID: 525119703}
+    - target: {fileID: 114619790106006984, guid: e6a1eae10f5f7974b9977eda8a626fc6,
+        type: 2}
+      propertyPath: playerIndex
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e6a1eae10f5f7974b9977eda8a626fc6, type: 2}
   m_IsPrefabParent: 0
@@ -690,6 +695,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2067021651}
   - component: {fileID: 2067021650}
+  - component: {fileID: 2067021652}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -714,6 +720,7 @@ MonoBehaviour:
   players:
   - {fileID: 615002144}
   - {fileID: 945561122}
+  controllers: 0000000002000000
   ammoObjects: []
 --- !u!4 &2067021651
 Transform:
@@ -728,3 +735,14 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2067021652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2067021649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41c9adeff4ac40248a00b8ba0d799203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

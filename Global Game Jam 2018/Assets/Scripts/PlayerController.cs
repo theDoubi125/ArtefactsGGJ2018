@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
 
 	void Start ()
     {
-        playerInputPrefix = "Player" + playerIndex + "_";
+        playerInputPrefix = GameController.instance.GetPlayerInputPrefix(playerIndex);
         body = GetComponent<Rigidbody>();
         animationController = GetComponent<CharacterAnimation>();
 	}
