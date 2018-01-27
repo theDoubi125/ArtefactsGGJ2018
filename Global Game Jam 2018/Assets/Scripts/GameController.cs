@@ -40,6 +40,8 @@ public class GameController : MonoBehaviour
 
     public string GetPlayerInputPrefix(int playerIndex)
     {
+        if (controllers.Count <= playerIndex)
+            return "ERROR_";
         return GetPlayerControllerInputPrefix(controllers[playerIndex]);
     }
 

@@ -29,7 +29,9 @@ public class PlayerController : MonoBehaviour
     {
         if (!GameController.instance.IsPlayerControlled(playerIndex))
             gameObject.SetActive(false);
-        playerInputPrefix = GameController.instance.GetPlayerInputPrefix(playerIndex);
+        else 
+            playerInputPrefix = GameController.instance.GetPlayerInputPrefix(playerIndex);
+
         body = GetComponent<Rigidbody>();
         animationController = GetComponent<CharacterAnimation>();
 	}
