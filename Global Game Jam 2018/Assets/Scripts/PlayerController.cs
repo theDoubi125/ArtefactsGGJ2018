@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 weaponDirection = Vector2.right;
 
-    float cursorDistance = 10;
+    public float cursorDistance = 3;
 
     private string playerInputPrefix;
     private Rigidbody body;
@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour
 
     private Quaternion currentRotation = Quaternion.identity;
     private Quaternion targetRotation;
+
+    private Vector3 currentTargetDirection;
 
 	void Start ()
     {
@@ -33,9 +35,12 @@ public class PlayerController : MonoBehaviour
 	void Update ()
     {
         body.AddForce(acceleration * (new Vector3(Input.GetAxis(playerInputPrefix + "Move_X"), 0, Input.GetAxis(playerInputPrefix + "Move_Y"))).normalized);
-        Vector3 inputWeaponDirection = new Vector3(Input.GetAxis(playerInputPrefix + "Look_X"), 0, Input.GetAxis(playerInputPrefix + "Look_Y"));
-        if (inputWeaponDirection.sqrMagnitude > directionMinLength * directionMinLength)
-            weaponDirection = inputWeaponDirection.normalized;
+        Vector3 targetDirection = new Vector3(Input.GetAxis(playerInputPrefix + "Look_X"), 0, -Input.GetAxis(playerInputPrefix + "Look_Y"));
+        if (targetDirection.sqrMagnitude > directionMinLength * directionMinLength)
+        {
+            currentTargetDirection = targetDirection;
+            weaponDirection = currentTargetDirection.normalized;
+        }
         cursor.transform.position = transform.position + weaponDirection * cursorDistance;
         Vector3 direction = body.velocity.normalized;
         if (body.velocity.sqrMagnitude > minSpeedForRot * minSpeedForRot)
@@ -53,6 +58,11 @@ public class PlayerController : MonoBehaviour
 
         animationController.SetSpeedRatio(body.velocity.magnitude / maxSpeed);
 	}
+
+    public Vector3 GetWeaponDirection()
+    {
+        return currentTargetDirection;
+    }
 
     public string GetPlayerInputPrefix()
     {

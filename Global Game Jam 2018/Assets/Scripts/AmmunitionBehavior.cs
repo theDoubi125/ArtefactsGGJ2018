@@ -18,7 +18,7 @@ public class AmmunitionBehavior : MonoBehaviour
 	virtual public void ApplyBehavior()
 	{
 		if (GetComponent<Rigidbody>() != null)
-        	GetComponent<Rigidbody>().AddForce(transform.right*1000);
+        	GetComponent<Rigidbody>().AddForce(transform.forward*1000);
 	}
 
 	virtual public void OnCollisionEnter(Collision col)

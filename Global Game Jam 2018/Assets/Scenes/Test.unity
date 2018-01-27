@@ -197,11 +197,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &307675510 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4395248849259152, guid: e92246b1167d5b048aabfa1cc499b05d,
-    type: 2}
-  m_PrefabInternal: {fileID: 805113312}
 --- !u!1 &525119702
 GameObject:
   m_ObjectHideFlags: 0
@@ -227,11 +222,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 525119702}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_LocalPosition: {x: -1.41, y: 2.49, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 307675510}
-  m_RootOrder: 1
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &525119704
 MeshRenderer:
@@ -434,6 +429,11 @@ Prefab:
       propertyPath: acceleration
       value: 70
       objectReference: {fileID: 0}
+    - target: {fileID: 114744209459948406, guid: e92246b1167d5b048aabfa1cc499b05d,
+        type: 2}
+      propertyPath: cursor
+      value: 
+      objectReference: {fileID: 525119703}
     m_RemovedComponents:
     - {fileID: 135556464667382060, guid: e92246b1167d5b048aabfa1cc499b05d, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: e92246b1167d5b048aabfa1cc499b05d, type: 2}
