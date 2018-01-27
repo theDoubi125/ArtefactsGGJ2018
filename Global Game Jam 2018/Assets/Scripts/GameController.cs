@@ -27,9 +27,11 @@ public class GameController : MonoBehaviour
 	void Start ()
 	{
         DontDestroyOnLoad(gameObject);
-		for (int i = 0; i < initialAmmo; i++) {
+		for (int i = 0; i < initialAmmo; i++)
+        {
 			int rdm = Random.Range (0, ammunitions.Count - 1);
-			foreach (PlayerController player in players) {
+			foreach (PlayerController player in players)
+            {
 				WeaponController weapon = player.GetComponent<WeaponController> ();
 				GameObject tmp = Instantiate (ammoObjects [rdm]);
 				tmp.transform.SetParent (player.transform);
@@ -67,5 +69,4 @@ public class GameController : MonoBehaviour
         controllers.Add(playerId);
         return true;
     }
-
 }

@@ -6,7 +6,8 @@ public class Ammunition : MonoBehaviour
 {
 	public enum behaviorEnum
 	{
-		TestAmmunitionBehavior
+		TestAmmunitionBehavior,
+		Test2
 	};
 	public enum bonusEnum
 	{
@@ -14,15 +15,13 @@ public class Ammunition : MonoBehaviour
 	};
 	public behaviorEnum behaviorchoice;
 	public bonusEnum bonuschoice;
-	[HideInInspector]
+//	[HideInInspector]
 	public AmmunitionBehavior behavior;
-	[HideInInspector]
+//	[HideInInspector]
 	public AmmunitionBonus bonus;
 	public PlayerController shooter;
 	//TODO : Add graph variables
 	public Transform billboardApparence;
-
-    private AmmunitionBonus AmmoBonus;
 
 	void Start()
 	{
@@ -31,6 +30,10 @@ public class Ammunition : MonoBehaviour
 			case behaviorEnum.TestAmmunitionBehavior:
 				gameObject.AddComponent<TestAmmunitionBehavior>();
 				behavior = GetComponent<TestAmmunitionBehavior>();
+				break;
+			case behaviorEnum.Test2:
+				gameObject.AddComponent<Test2AmmunitionBehavior>();
+				behavior = GetComponent<Test2AmmunitionBehavior>();
 				break;
 			default:
 				break;
@@ -45,7 +48,6 @@ public class Ammunition : MonoBehaviour
 			default:
 				break;
 		}
-        AmmoBonus = GetComponent<AmmunitionBonus>();
 	}
 
 	void Update()
@@ -58,16 +60,12 @@ public class Ammunition : MonoBehaviour
 				{
 					ChangeToBillboard();
 				}
-                AmmoBonus.ApplyMalus(shooter);
-			}
-			else
-			{
-				ApplyDamage();
+				GetComponent<AmmunitionBonus>().ApplyMalus(shooter);
 			}
 		}
 	}
 
-	void ApplyDamage()
+	public void ApplyDamage()
 	{
 		behavior.hitPlayer.gameObject.GetComponent<HealthController>().Hit(this);
 		behavior.hitPlayer.gameObject.GetComponent<WeaponController>().HarvestCrate(this);
