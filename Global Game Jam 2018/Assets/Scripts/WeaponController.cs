@@ -46,8 +46,9 @@ public class WeaponController : MonoBehaviour
 	public void CreateProjectile()
 	{
 		Transform projectile = Instantiate(projectilePrefab);
-		projectile.position = transform.position + transform.right * 0.5f;
-		projectile.rotation = transform.rotation;
+        projectile.position = transform.position + player.GetWeaponDirection() * 0.5f;
+
+        projectile.rotation = Quaternion.LookRotation(player.GetWeaponDirection());
 		projectile.gameObject.AddComponent <Ammunition>();
 		Ammunition tmp = projectile.gameObject.GetComponent<Ammunition>();
 		tmp.behaviorchoice = magazine[0].GetComponent<Ammunition>().behaviorchoice;
