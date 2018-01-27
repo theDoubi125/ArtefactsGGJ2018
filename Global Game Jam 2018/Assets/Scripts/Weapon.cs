@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackWeapon : MonoBehaviour
+public class Weapon : MonoBehaviour
 {
     public Transform projectilePrefab;
     private PlayerController player;
@@ -15,9 +15,10 @@ public class AttackWeapon : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
     {
-        if (Input.GetButtonDown(player.GetPlayerInputPrefix() + "_Action_1"))
+        if (Input.GetButtonDown(player.GetPlayerInputPrefix() + "Action1"))
         {
-            Instantiate(projectilePrefab, transform);
+            Transform projectile = Instantiate(projectilePrefab);
+            projectile.position = transform.position;
         }
 	}
 }
