@@ -21,4 +21,9 @@ public class PlayerController : MonoBehaviour
     {
         body.AddForce(acceleration * new Vector2(Input.GetAxis(playerInputPrefix + "Move_X"), Input.GetAxis(playerInputPrefix + "Move_Y")));
 	}
+
+    public string GetPlayerInputPrefix()
+    {
+        return playerInputPrefix;
+    }
 }
