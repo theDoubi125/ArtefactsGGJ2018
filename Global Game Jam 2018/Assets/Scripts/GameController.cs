@@ -15,7 +15,8 @@ public class GameController : MonoBehaviour
 	{
 		foreach (Ammunition ammo in ammunitions) {
 			GameObject tmp = new GameObject ();
-			tmp.AddComponent (ammo.GetType ());
+			tmp.name = ammo.name;
+			tmp.AddComponent (ammo.GetType());
 			ammoObjects.Add (tmp);
 		}
 	}
@@ -23,7 +24,7 @@ public class GameController : MonoBehaviour
 	void Start ()
 	{
 		for (int i = 0; i < initialAmmo; i++) {
-			int rdm = Random.Range (0, ammunitions.Count - 1);
+			int rdm = Random.Range (0, ammunitions.Count);
 			foreach (PlayerController player in players) {
 				WeaponController weapon = player.GetComponent<WeaponController> ();
 				GameObject tmp = Instantiate (ammoObjects [rdm]);
@@ -31,11 +32,5 @@ public class GameController : MonoBehaviour
 				weapon.magazine.Add (tmp);
 			}
 		}
-	}
-
-	// Update is called once per frame
-	void Update ()
-	{
-		
 	}
 }

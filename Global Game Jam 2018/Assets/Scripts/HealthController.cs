@@ -16,6 +16,7 @@ public class HealthController : MonoBehaviour
 
 	public void Hit(Ammunition ammo)
 	{
+		Debug.Log ("Hit");
 		currentHP = Mathf.Max(currentHP - ammo.behavior.damage, 0);
 		if (currentHP == 0)
 		{

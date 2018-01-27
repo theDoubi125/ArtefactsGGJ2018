@@ -40,8 +40,7 @@ public class WeaponController : MonoBehaviour
 	{
 		Transform projectile = Instantiate(projectilePrefab);
         projectile.position = transform.position + player.GetWeaponDirection() * 0.5f;
-
-        projectile.rotation = Quaternion.LookRotation(player.GetWeaponDirection());
+        projectile.rotation = Quaternion.LookRotation(player.GetWeaponDirection()); 	
 		projectile.gameObject.AddComponent <Ammunition>();
 		Ammunition tmp = projectile.gameObject.GetComponent<Ammunition>();
 		tmp.behaviorchoice = magazine[0].GetComponent<Ammunition>().behaviorchoice;
@@ -53,12 +52,13 @@ public class WeaponController : MonoBehaviour
 
 	public void HarvestCrate (Ammunition ammo)
 	{
-//		Debug.Log("Crate harvested");
+		Debug.Log("Crate harvested");
 		GameObject tmp = new GameObject();
 		tmp.AddComponent<Ammunition>();
 		tmp.GetComponent<Ammunition>().behaviorchoice = ammo.behaviorchoice;
 		tmp.GetComponent<Ammunition>().bonuschoice = ammo.bonuschoice;
 		tmp.transform.SetParent (transform);
 		magazine.Add(tmp);
+		Destroy(ammo.gameObject);
 	}
 }
