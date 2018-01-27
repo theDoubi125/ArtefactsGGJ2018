@@ -1,41 +1,16 @@
 fileFormatVersion: 2
-guid: a739cfebd1f09c9499001404db43d4e2
-timeCreated: 1517073335
+guid: a9ce176f346019a46a49e57e2bb0b29b
+timeCreated: 1517082331
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: Cone
-    100002: Cone_001
-    100004: Cube_001
-    100006: //RootNode
-    100008: Sphere
-    100010: Cone_002
-    400000: Cone
-    400002: Cone_001
-    400004: Cube_001
-    400006: //RootNode
-    400008: Sphere
-    400010: Cone_002
-    2100000: unnamed
-    2100002: Material_001
-    2300000: Cone
-    2300002: Cone_001
-    2300004: Cube_001
-    2300006: Sphere
-    2300008: Cone_002
-    3300000: Cone
-    3300002: Cone_001
-    3300004: Cube_001
-    3300006: Sphere
-    3300008: Cone_002
-    4300000: Cone_001
-    4300002: Cone
-    4300004: Cube_001
-    4300006: Sphere
-    4300008: Cone_002
-    7400000: Default Take
-    9500000: //RootNode
+    100000: //RootNode
+    400000: //RootNode
+    2100000: No Name
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Cone.002
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -110,7 +85,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
