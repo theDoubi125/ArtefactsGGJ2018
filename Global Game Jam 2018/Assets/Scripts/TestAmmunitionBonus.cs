@@ -8,17 +8,14 @@ public class TestAmmunitionBonus : AmmunitionBonus {
 	void Start () {
 		
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+
+	override public void ApplyBonus (PlayerController player)
+	{
+		player.acceleration += 1 * Time.deltaTime;
 	}
 
-	override public void ApplyBonus ()
+	override public void ApplyMalus (PlayerController player)
 	{
-	}
-
-	override public void ApplyMalus ()
-	{
+		player.acceleration -= 1 * Time.deltaTime;
 	}
 }

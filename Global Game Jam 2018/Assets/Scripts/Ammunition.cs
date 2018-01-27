@@ -14,14 +14,15 @@ public class Ammunition : MonoBehaviour
 	};
 	public behaviorEnum behaviorchoice;
 	public bonusEnum bonuschoice;
-	[HideInInspector]
+//	[HideInInspector]
 	public AmmunitionBehavior behavior;
-	[HideInInspector]
+//	[HideInInspector]
 	public AmmunitionBonus bonus;
-	public int PlayerId;
+	public PlayerController shooter;
 	//TODO : Add graph variables
+	public Transform billboardApparence;
 
-	void Start()
+	void Awake()
 	{
 		switch (behaviorchoice)
 		{
@@ -50,7 +51,11 @@ public class Ammunition : MonoBehaviour
 		{
 			if (!behavior.hitPlayer)
 			{
-				ChangeToCrate();
+				if (GetComponent<Rigidbody>() != null)
+				{
+					ChangeToBillboard();
+				}
+				GetComponent<AmmunitionBonus>().ApplyMalus(shooter);
 			}
 			else
 			{
@@ -66,8 +71,21 @@ public class Ammunition : MonoBehaviour
 		behavior.hitPlayer.gameObject.GetComponent<WeaponController>().Hit();
 	}
 
-	void ChangeToCrate()
+	void ChangeToBillboard()
 	{
-		bonus.ApplyMalus();
+		DestroyObject(GetComponent<Rigidbody>());
+		GetComponent<Collider>().isTrigger = true;
+		//TODO : Change apparence
+	}
+
+	void OnTriggerEnter (Collider col)
+	{
+		PlayerController tmp = col.GetComponent<PlayerController>();
+		if (tmp != null)
+		{
+			tmp.GetComponent<WeaponController>().HarvestCrate(this);
+			//TODO : Play SFX
+			Destroy(gameObject);
+		}
 	}
 }
