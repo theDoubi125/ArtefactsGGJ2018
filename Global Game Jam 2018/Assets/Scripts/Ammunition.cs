@@ -14,15 +14,15 @@ public class Ammunition : MonoBehaviour
 	};
 	public behaviorEnum behaviorchoice;
 	public bonusEnum bonuschoice;
-//	[HideInInspector]
+	[HideInInspector]
 	public AmmunitionBehavior behavior;
-//	[HideInInspector]
+	[HideInInspector]
 	public AmmunitionBonus bonus;
 	public PlayerController shooter;
 	//TODO : Add graph variables
 	public Transform billboardApparence;
 
-	void Awake()
+	void Start()
 	{
 		switch (behaviorchoice)
 		{
@@ -66,9 +66,8 @@ public class Ammunition : MonoBehaviour
 
 	void ApplyDamage()
 	{
-		//TODO : implement HealthController
-		//behavior.hitPlayer.gameObject.GetComponent<HealthController>().Hit(this);
-		behavior.hitPlayer.gameObject.GetComponent<WeaponController>().Hit();
+		behavior.hitPlayer.gameObject.GetComponent<HealthController>().Hit(this);
+		behavior.hitPlayer.gameObject.GetComponent<WeaponController>().HarvestCrate(this);
 	}
 
 	void ChangeToBillboard()

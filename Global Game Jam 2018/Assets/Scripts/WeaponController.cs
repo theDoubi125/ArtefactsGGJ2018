@@ -53,18 +53,12 @@ public class WeaponController : MonoBehaviour
 		tmp.behaviorchoice = magazine[0].GetComponent<Ammunition>().behaviorchoice;
 		tmp.bonuschoice = magazine[0].GetComponent<Ammunition>().bonuschoice;
 		tmp.shooter = player;
+		Destroy(magazine[0]);
 		magazine.RemoveAt(0);
-	}
-
-	public void Hit ()
-	{
-		//TODO : TODO
-		Debug.Log(player.playerIndex + " has been hit");
 	}
 
 	public void HarvestCrate (Ammunition ammo)
 	{
-		//TODO : TODO
 		Debug.Log("Crate harvested");
 		GameObject tmp = new GameObject();
 		tmp.AddComponent<Ammunition>();

@@ -5,6 +5,7 @@ using UnityEngine;
 public class AmmunitionBehavior : MonoBehaviour
 {
 	public PlayerController hitPlayer;
+	public int damage;
 
 	// Use this for initialization
 	void Start()
