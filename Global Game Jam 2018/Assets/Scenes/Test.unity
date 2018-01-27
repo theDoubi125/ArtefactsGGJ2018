@@ -282,11 +282,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 307675503}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b56ba5419715d6048a55c820ce5b04eb, type: 3}
+  m_Script: {fileID: 11500000, guid: 6029605c34dc0334e83a8c6d40027532, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 4768133177856040, guid: 68891ac949d7194429bb52487c83339d,
     type: 2}
+  magazine:
+  - {fileID: 114965008342062246, guid: e24f1e8bdc40ba0469fa748aff1d6aff, type: 2}
 --- !u!114 &307675509
 MonoBehaviour:
   m_ObjectHideFlags: 0

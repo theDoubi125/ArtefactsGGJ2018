@@ -22,7 +22,8 @@ public class WeaponController : MonoBehaviour
 			if (magazine.Count > 0)
 			{
 				Transform projectile = Instantiate(projectilePrefab);
-				projectile.position = transform.position;
+				projectile.position = transform.position + transform.right * 0.5f;
+                projectile.rotation = transform.rotation;
 				projectile.gameObject.AddComponent <Ammunition>();
 				Ammunition tmp = projectile.gameObject.GetComponent<Ammunition>();
 				tmp.behaviorchoice = magazine[0].behaviorchoice;
