@@ -205,7 +205,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1177598867448866}
-  m_LocalRotation: {x: -0, y: 0.8460299, z: -0, w: 0.5331355}
+  m_LocalRotation: {x: 0, y: 0.9295423, z: 0, w: 0.3687155}
   m_LocalPosition: {x: 0.58, y: 5.57, z: -0.28}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -535,10 +535,10 @@ MonoBehaviour:
   startValue: 0
   transmissionSpeed: 20
   bonusFactor:
-  - 0
-  - 0
-  - 0
-  - 0
+  - 1
+  - 1
+  - 1
+  - 1
   arePlayersChanneling: 00000000
   gauges:
   - {fileID: 4166676828551280}
@@ -546,10 +546,10 @@ MonoBehaviour:
   - {fileID: 4039245106979492}
   - {fileID: 4836962408181486}
   gaugesInitialPositions:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
+  - {x: -0.68, y: -0.5, z: 0.29000002}
+  - {x: -0.17000002, y: -0.5, z: 0.14999998}
+  - {x: 0.41, y: -0.5, z: 0.18}
+  - {x: 0.87, y: -0.5, z: 0.31}
   gaugesFinalPositions:
   - {x: -0.68, y: 4, z: 0.29}
   - {x: -0.17, y: 4, z: 0.15}
