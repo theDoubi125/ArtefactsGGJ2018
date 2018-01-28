@@ -15,13 +15,16 @@ public class HealthController : MonoBehaviour
 	void Start ()
 	{
 		currentHP = maxHP;
+		slider = GetComponent<PlayerController> ().personnalHUD.GetComponentInChildren<Slider> ();
+		slider.maxValue = maxHP;
+		slider.value = currentHP;
 	}
 
 	public void Hit(Ammunition ammo)
 	{
 //		Debug.Log ("Hit");
 		currentHP = (int) Mathf.Round(Mathf.Max(currentHP - ammo.behavior.damage * bonusFactor, 0));
-		GetComponent<PlayerController> ().personnalHUD.GetComponentInChildren<Slider> ().value = currentHP;
+		slider.value = currentHP;
 		if (currentHP == 0)
 		{
 			Death ();

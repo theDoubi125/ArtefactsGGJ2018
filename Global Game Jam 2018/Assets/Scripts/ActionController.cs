@@ -17,8 +17,6 @@ public class ActionController : MonoBehaviour
     private MeleeAttackCollider meleeHitbox;
     public Vector2 meleePushback = new Vector2(10, 20);
 
-    private bool isTransmitterInRange { get { return meleeHitbox.isTransmitterInRange; } }
-
     void Start ()
     {
         player = GetComponent<PlayerController>();
@@ -47,6 +45,14 @@ public class ActionController : MonoBehaviour
         string meleeInputName = player.GetPlayerInputPrefix() + "Melee";
         if (meleeReloadTime > 0)
             meleeReloadTime -= Time.deltaTime;
+		if (Input.GetButton (meleeInputName) && isInRangeOfTransmitter) {
+			FindObjectOfType<Transmitter> ().arePlayersChanneling [player.playerIndex] = true;
+		}
+        else
+        {
+			FindObjectOfType<Transmitter> ().arePlayersChanneling [player.playerIndex] = false;
+		}
+
         if (meleeReloadTime <= 0 && Input.GetButtonDown(meleeInputName))
         {
             List<HealthController> entitiesAtRange = meleeHitbox.GetEntitiesAtRange();

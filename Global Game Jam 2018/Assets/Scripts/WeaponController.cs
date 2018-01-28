@@ -8,12 +8,15 @@ public class WeaponController : MonoBehaviour
 	public List<GameObject> magazine;
 	public int maxCapacity = 5;
 	public PlayerController player;
+	public GameObject hudAmmo;
+	public Transform hudAmmoParent;
 
 	// Use this for initialization
 	void Start ()
 	{
 		player = GetComponent<PlayerController>();
 		magazine.Capacity = maxCapacity;
+		hudAmmoParent = GetComponent<PlayerController> ().personnalHUD.transform.GetChild (2);
 	}
 
 	// Update is called once per frame
@@ -36,6 +39,17 @@ public class WeaponController : MonoBehaviour
 		}
 	}
 
+	public void AddHUDAmmo ()
+	{
+		GameObject newHUDAmmo = Instantiate (hudAmmo);
+		newHUDAmmo.transform.SetParent (hudAmmoParent, false);
+	}
+
+	public void DeleteHUDAmmo()
+	{
+		Destroy(hudAmmoParent.transform.GetChild(0).gameObject);
+	}
+
 	public void CreateProjectile()
 	{
 		Transform projectile = Instantiate(projectilePrefab);
@@ -49,6 +63,7 @@ public class WeaponController : MonoBehaviour
 		magazine [0].GetComponent<AmmunitionBonus> ().StopAction (player);
 		Destroy(magazine[0]);
 		magazine.RemoveAt(0);
+		DeleteHUDAmmo ();
 	}
 
 	public void HarvestCrate (Ammunition ammo)
@@ -60,6 +75,7 @@ public class WeaponController : MonoBehaviour
 		tmp.GetComponent<Ammunition>().bonuschoice = ammo.bonuschoice;
 		tmp.transform.SetParent (transform);
 		magazine.Add(tmp);
+		AddHUDAmmo ();
 		Destroy(ammo.gameObject);
 	}
 }

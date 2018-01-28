@@ -592,7 +592,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxValue: 100
   startValue: 0
-  transmissionSpeed: 1
+  transmissionSpeed: 20
   bonusFactor: 1
   arePlayersChanneling: 00000000
   gauges:
@@ -606,10 +606,10 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
   gaugesFinalPositions:
-  - {x: -0.78, y: 4, z: -0.66}
-  - {x: -0.27, y: 4, z: -0.8}
-  - {x: 0.31, y: 4, z: -0.8}
-  - {x: 0.77, y: 4, z: -0.66}
+  - {x: -0.68, y: 4, z: 0.29}
+  - {x: -0.17, y: 4, z: 0.15}
+  - {x: 0.41, y: 4, z: 0.18}
+  - {x: 0.87, y: 4, z: 0.31}
   playerScores:
   - 0
   - 0
