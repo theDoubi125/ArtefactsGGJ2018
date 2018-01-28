@@ -7,7 +7,7 @@ public class HealthController : MonoBehaviour
 	public int currentHP;
 	public int maxHP;
 	public int minHP;
-	public int bonusFactor = 1;
+	public float bonusFactor = 1f;
 
 	// Use this for initialization
 	void Start ()
@@ -18,7 +18,7 @@ public class HealthController : MonoBehaviour
 	public void Hit(Ammunition ammo)
 	{
 		Debug.Log ("Hit");
-		currentHP = Mathf.Max(currentHP - ammo.behavior.damage * bonusFactor, 0);
+		currentHP = (int) Mathf.Round(Mathf.Max(currentHP - ammo.behavior.damage * bonusFactor, 0));
 		if (currentHP == 0)
 		{
 			Death ();
