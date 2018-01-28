@@ -5,31 +5,25 @@ using UnityEngine;
 public class MeleeAttackCollider : MonoBehaviour
 {
     List<HealthController> entitiesAtRange = new List<HealthController>();
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     void OnTriggerEnter(Collider collider)
     {
-        HealthController health = collider.GetComponent<HealthController>();
+        Debug.Log(collider);
+        HealthController health = collider.GetComponentInParent<HealthController>();
         if (health != null)
         {
             entitiesAtRange.Add(health);
+            Debug.Log(entitiesAtRange.Count);
         }
     }
 
     void OnTriggerExit(Collider collider)
     {
-        HealthController health = collider.GetComponent<HealthController>();
+        HealthController health = collider.GetComponentInParent<HealthController>();
         if (health != null)
         {
             entitiesAtRange.Remove(health);
+            Debug.Log(entitiesAtRange.Count);
         }
     }
 
