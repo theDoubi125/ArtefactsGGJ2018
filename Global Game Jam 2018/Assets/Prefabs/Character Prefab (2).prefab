@@ -734,6 +734,7 @@ MonoBehaviour:
   initialRotation: {x: 0, y: 0, z: 0, w: 0}
   personnalHUD: {fileID: 0}
   isOnGround: 0
+  characterSprite: {fileID: 21300000, guid: 76606db01066b6644a62b25f8ba4f456, type: 3}
 --- !u!114 &114201812091181616
 MonoBehaviour:
   m_ObjectHideFlags: 1
