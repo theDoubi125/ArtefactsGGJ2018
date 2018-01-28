@@ -15,10 +15,10 @@ public class ReboundAmmunitionBehavior : AmmunitionBehavior {
 	virtual public void ApplyBehavior()
 	{
 		if (GetComponent<Rigidbody>() != null)
-			GetComponent<Rigidbody>().AddForce(transform.forward*2000);
+			GetComponent<Rigidbody>().AddForce(transform.forward*800);
 	}
 
-	virtual public void OnCollisionEnter(Collision col)
+	override public void OnCollisionEnter(Collision col)
 	{
 		hitPlayer = col.collider.gameObject.GetComponent<PlayerController>();
 		//TODO : need to change this to be able to injure oneself by rebound, need to change the origin of the bullet to do so.

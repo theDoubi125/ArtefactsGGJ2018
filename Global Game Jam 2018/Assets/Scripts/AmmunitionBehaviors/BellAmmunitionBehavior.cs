@@ -10,9 +10,9 @@ public class BellAmmunitionBehavior : AmmunitionBehavior{
 		damage = 20;
 	}
 	
-	virtual public void ApplyBehavior()
+	override public void ApplyBehavior()
 	{
 		if (GetComponent<Rigidbody>() != null)
-			GetComponent<Rigidbody>().AddForce(new Vector3(1,1,0)*500);
+			GetComponent<Rigidbody>().AddForce(new Vector3(1,5,0)*50);
 	}
 }
