@@ -20,6 +20,8 @@ public class ActionController : MonoBehaviour
     CharacterAnimation characterAnimation;
     WeaponController weaponController;
     Transmitter transmitter;
+    bool isDashPressed = false;
+    float InputThreshold = 0.5f;
 
     void Start ()
     {
@@ -37,11 +39,17 @@ public class ActionController : MonoBehaviour
         {
             
             string dashInputName = player.GetPlayerInputPrefix() + "Dash";
-            if (dashReloadTime + dashReloadBonusFactor <= 0 && Input.GetButtonDown(dashInputName))
+            if (Input.GetAxis(dashInputName) < InputThreshold && isDashPressed)
+                isDashPressed = false;
+            else if (Input.GetAxis(dashInputName) > InputThreshold && !isDashPressed)
             {
-                body.AddForce(player.GetMovementDirection() * dashForce, ForceMode.VelocityChange);
-                dashReloadTime = dashReloadDuration;
-                characterAnimation.Dash();
+                isDashPressed = true;
+                if (dashReloadTime + dashReloadBonusFactor <= 0)
+                {
+                    body.AddForce(player.GetMovementDirection() * dashForce, ForceMode.VelocityChange);
+                    dashReloadTime = dashReloadDuration;
+                    characterAnimation.Dash();
+                }
             }
             if (dashReloadTime > 0)
                 dashReloadTime -= Time.deltaTime;
