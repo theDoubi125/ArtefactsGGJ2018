@@ -11,7 +11,6 @@ public class PlayerController : MonoBehaviour
     public float maxSpeed = 5f;
     public float rotSpeed = 10;
     public float minSpeedForRot = 1;
-    public Transform cursor;
 
     private Vector3 weaponDirection = Vector2.right;
 
@@ -26,6 +25,11 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 currentTargetDirection;
 
+    public Quaternion initialRotation;
+
+    private Transform cursorTransform;
+    private CharacterMeshComponent characterMesh;
+
 	void Awake ()
     {
         if (!GameController.instance.IsPlayerControlled(playerIndex))
@@ -35,11 +39,15 @@ public class PlayerController : MonoBehaviour
 
         body = GetComponent<Rigidbody>();
         animationController = GetComponent<CharacterAnimation>();
+
+        CursorController cursorController = GetComponentInChildren<CursorController>();
+        if(cursorController != null)
+            cursorTransform = cursorController.transform;
+        characterMesh = transform.GetComponentInChildren<CharacterMeshComponent>();
 	}
 	
 	void Update ()
     {
-        Debug.Log(playerInputPrefix);
         body.AddForce(acceleration * (new Vector3(Input.GetAxis(playerInputPrefix + "Move_X"), 0, Input.GetAxis(playerInputPrefix + "Move_Y"))).normalized);
         Vector3 targetDirection = new Vector3(Input.GetAxis(playerInputPrefix + "Look_X"), 0, -Input.GetAxis(playerInputPrefix + "Look_Y"));
         if (targetDirection.sqrMagnitude > directionMinLength * directionMinLength)
@@ -47,8 +55,8 @@ public class PlayerController : MonoBehaviour
             currentTargetDirection = targetDirection;
             weaponDirection = currentTargetDirection.normalized;
         }
-        if(cursor != null)
-            cursor.transform.position = transform.position + weaponDirection * cursorDistance;
+        if(cursorTransform != null)
+            cursorTransform.rotation = Quaternion.LookRotation(weaponDirection);
         Vector3 direction = body.velocity.normalized;
         if (body.velocity.sqrMagnitude > minSpeedForRot * minSpeedForRot)
         {
@@ -60,7 +68,8 @@ public class PlayerController : MonoBehaviour
 
         float deltaAngle = Quaternion.Angle(currentRotation, targetRotation);
         currentRotation = Quaternion.RotateTowards(currentRotation, targetRotation, rotSpeed * Time.deltaTime); 
-        transform.SetPositionAndRotation(transform.position, currentRotation);
+        if(characterMesh != null)
+            characterMesh.SetRotation(currentRotation.eulerAngles.y);
 
         animationController.SetSpeedRatio(body.velocity.magnitude / maxSpeed);
 	}
