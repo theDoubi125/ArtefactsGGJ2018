@@ -887,6 +887,7 @@ MonoBehaviour:
   player: {fileID: 0}
   hudAmmo: {fileID: 1246995441662066, guid: 749a1ae668d9d4242810e14ad860b620, type: 2}
   hudAmmoParent: {fileID: 0}
+  InputThreshold: 0.5
   Freddygreen: {r: 0.54509807, g: 0.77254903, b: 0.24705882, a: 1}
   Freddyred: {r: 0.9254902, g: 0.10980392, b: 0.14117648, a: 1}
 --- !u!114 &114198114323432296
@@ -926,12 +927,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dashForce: 30
-  jumpForce: {x: 10, y: 20}
-  dashReloadDuration: 2
+  jumpForce: {x: 0, y: 30}
+  dashReloadDuration: 1.5
   dashReloadBonusFactor: 0
   isInRangeOfTransmitter: 0
   meleeReloadDuration: 1
-  meleePushback: {x: 10, y: 20}
+  meleePushback: {x: 20, y: 30}
   meleeDamage: 5
 --- !u!114 &114581376294997124
 MonoBehaviour:
