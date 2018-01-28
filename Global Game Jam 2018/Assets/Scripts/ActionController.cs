@@ -27,48 +27,53 @@ public class ActionController : MonoBehaviour
 	
 	void Update ()
     {
-        string dashInputName = player.GetPlayerInputPrefix() + "Dash";
-		if (dashReloadTime + dashReloadBonusFactor <= 0 && Input.GetButtonDown(dashInputName))
+        if (!GameController.instance.isGamePaused)
         {
-            body.AddForce(player.GetMovementDirection() * dashForce, ForceMode.VelocityChange);
-            dashReloadTime = dashReloadDuration;
-            GetComponent<CharacterAnimation>().Dash();
-        }
-        if (dashReloadTime > 0)
-            dashReloadTime -= Time.deltaTime;
-		
-        if (player.isOnGround && Input.GetButtonDown(player.GetPlayerInputPrefix() + "Jump"))
-        {
-            body.AddForce(transform.up * jumpForce.y + player.GetMovementDirection() * jumpForce.x, ForceMode.VelocityChange);
-            GetComponent<CharacterAnimation>().Jump();
-        }
-
-        string meleeInputName = player.GetPlayerInputPrefix() + "Melee";
-        if (meleeReloadTime > 0)
-            meleeReloadTime -= Time.deltaTime;
-		if (Input.GetButton (meleeInputName) && isInRangeOfTransmitter) {
-			FindObjectOfType<Transmitter> ().arePlayersChanneling [player.playerIndex] = true;
-		}
-        else
-        {
-			FindObjectOfType<Transmitter> ().arePlayersChanneling [player.playerIndex] = false;
-		}
-
-        if (meleeReloadTime <= 0 && Input.GetButtonDown(meleeInputName))
-        {
-            List<HealthController> entitiesAtRange = meleeHitbox.GetEntitiesAtRange();
-            for (int i = 0; i < entitiesAtRange.Count; i++)
+            
+            string dashInputName = player.GetPlayerInputPrefix() + "Dash";
+            if (dashReloadTime + dashReloadBonusFactor <= 0 && Input.GetButtonDown(dashInputName))
             {
-                entitiesAtRange[i].GetComponentInChildren<Animator>().SetTrigger("Hit");
-                Vector3 direction = entitiesAtRange[i].transform.position - transform.position;
-                direction.y = 0;
-                direction = direction.normalized;
-                entitiesAtRange[i].GetComponent<Rigidbody>().AddForce(Vector3.up * meleePushback.y + direction * meleePushback.x, ForceMode.Impulse);
-				entitiesAtRange [i].MeleeHit (meleeDamage);
-				GetComponent<WeaponController> ().StealWeapon (entitiesAtRange [i].GetComponent<WeaponController> ());
+                body.AddForce(player.GetMovementDirection() * dashForce, ForceMode.VelocityChange);
+                dashReloadTime = dashReloadDuration;
+                GetComponent<CharacterAnimation>().Dash();
             }
-            meleeReloadTime = meleeReloadDuration;
-            GetComponent<CharacterAnimation>().Attack();
+            if (dashReloadTime > 0)
+                dashReloadTime -= Time.deltaTime;
+    		
+            if (player.isOnGround && Input.GetButtonDown(player.GetPlayerInputPrefix() + "Jump"))
+            {
+                body.AddForce(transform.up * jumpForce.y + player.GetMovementDirection() * jumpForce.x, ForceMode.VelocityChange);
+                GetComponent<CharacterAnimation>().Jump();
+            }
+
+            string meleeInputName = player.GetPlayerInputPrefix() + "Melee";
+            if (meleeReloadTime > 0)
+                meleeReloadTime -= Time.deltaTime;
+            if (Input.GetButton(meleeInputName) && isInRangeOfTransmitter)
+            {
+                FindObjectOfType<Transmitter>().arePlayersChanneling[player.playerIndex] = true;
+            }
+            else
+            {
+                FindObjectOfType<Transmitter>().arePlayersChanneling[player.playerIndex] = false;
+            }
+
+            if (meleeReloadTime <= 0 && Input.GetButtonDown(meleeInputName))
+            {
+                List<HealthController> entitiesAtRange = meleeHitbox.GetEntitiesAtRange();
+                for (int i = 0; i < entitiesAtRange.Count; i++)
+                {
+                    entitiesAtRange[i].GetComponentInChildren<Animator>().SetTrigger("Hit");
+                    Vector3 direction = entitiesAtRange[i].transform.position - transform.position;
+                    direction.y = 0;
+                    direction = direction.normalized;
+                    entitiesAtRange[i].GetComponent<Rigidbody>().AddForce(Vector3.up * meleePushback.y + direction * meleePushback.x, ForceMode.Impulse);
+                    entitiesAtRange[i].MeleeHit(meleeDamage);
+                    GetComponent<WeaponController>().StealWeapon(entitiesAtRange[i].GetComponent<WeaponController>());
+                }
+                meleeReloadTime = meleeReloadDuration;
+                GetComponent<CharacterAnimation>().Attack();
+            }
         }
 	}
 }

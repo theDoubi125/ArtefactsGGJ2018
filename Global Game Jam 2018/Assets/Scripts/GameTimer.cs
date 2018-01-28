@@ -6,12 +6,13 @@ public class GameTimer : MonoBehaviour
 {
     public float MatchDuration;
     public Transform victoryMatchResultMenu;
-    public Transform defeatMatchResultMenu;
+    public RectTransform defeatMatchResultMenuPrefab;
+    public GameTimerDisplay timer;
     private float MatchTime;
 
     void Start()
     {
-        defeatMatchResultMenu.gameObject.SetActive(false);
+        timer = GetComponentInChildren<GameTimerDisplay>();
     }
 
     public float GetRemainingTime()
@@ -21,11 +22,16 @@ public class GameTimer : MonoBehaviour
 
     void Update()
     {
-        MatchTime += Time.deltaTime;
+        if (GameController.instance.isGamePaused)
+            return;
+        if(MatchTime < MatchDuration)
+            MatchTime += Time.deltaTime;
+        timer.SetTime(GetRemainingTime());
         if (MatchTime >= MatchDuration)
         {
             GameController.instance.PauseGame();
-            defeatMatchResultMenu.gameObject.SetActive(true);
+            RectTransform instance = Instantiate<RectTransform>(defeatMatchResultMenuPrefab);
+            instance.SetParent(transform, false);
         }
     }
 }
