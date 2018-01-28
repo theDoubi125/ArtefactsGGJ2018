@@ -273,7 +273,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1037446586810000}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0.3}
+  m_LocalPosition: {x: 0, y: 0.3, z: 0.3}
   m_LocalScale: {x: 0.35253757, y: 0.35253748, z: 0.35270113}
   m_Children: []
   m_Father: {fileID: 4584957877266104}
@@ -314,7 +314,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1971786985207762}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.4, y: 1.3, z: 5.6}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4448195683856192}
@@ -621,6 +621,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   acceleration: 70
+  defaultAcceleration: 10
   playerIndex: 1
   directionMinLength: 0.5
   maxSpeed: 5
@@ -643,6 +644,7 @@ MonoBehaviour:
   jumpForce: {x: 10, y: 20}
   groundDetectionRange: 1.2
   dashReloadDuration: 2
+  dashReloadBonusFactor: 0
 --- !u!114 &114572355184802634
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -680,6 +682,7 @@ MonoBehaviour:
   currentHP: 100
   maxHP: 100
   minHP: 0
+  bonusFactor: 1
 --- !u!114 &114821778879393860
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -697,7 +700,7 @@ CapsuleCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1971786985207762}
-  m_Material: {fileID: 13400000, guid: eaefcd36823b77d4d88462af915523b9, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
