@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float acceleration = 10;
+	public float defaultAcceleration = 10;
     public int playerIndex = 1;
     public float directionMinLength = 0.5f;
     public float maxSpeed = 5f;
@@ -29,7 +30,7 @@ public class PlayerController : MonoBehaviour
     private Transform cursorTransform;
     private CharacterMeshComponent characterMesh;
 
-	void Start ()
+	void Awake ()
     {
         if (!GameController.instance.IsPlayerControlled(playerIndex))
             gameObject.SetActive(false);

@@ -10,6 +10,7 @@ public class ActionController : MonoBehaviour
     public Vector2 jumpForce = new Vector2(3, 20);
     public float groundDetectionRange = 1.2f;
     public float dashReloadDuration = 2;
+	public float dashReloadBonusFactor = 0;
     private float dashReloadTime = 0;
 
     void Start ()
@@ -21,7 +22,7 @@ public class ActionController : MonoBehaviour
 	void Update ()
     {
         string dashInputName = player.GetPlayerInputPrefix() + "Dash";
-        if (dashReloadTime <= 0 && Input.GetButtonDown(dashInputName))
+		if (dashReloadTime + dashReloadBonusFactor <= 0 && Input.GetButtonDown(dashInputName))
         {
             body.AddForce(transform.right * dashForce, ForceMode.VelocityChange);
             dashReloadTime = dashReloadDuration;
@@ -29,6 +30,7 @@ public class ActionController : MonoBehaviour
         }
         if (dashReloadTime > 0)
             dashReloadTime -= Time.deltaTime;
+		
         if (Physics.Raycast(transform.position, Vector3.down, groundDetectionRange) && Input.GetButtonDown(player.GetPlayerInputPrefix() + "Jump"))
         {
             body.AddForce(transform.up * jumpForce.y + transform.right * jumpForce.x, ForceMode.VelocityChange);

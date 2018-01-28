@@ -42,8 +42,8 @@ public class Ammunition : MonoBehaviour
 		switch (bonuschoice)
 		{
 			case bonusEnum.TestAmmunitionBonus:
-				gameObject.AddComponent<TestAmmunitionBonus>();
-				bonus = GetComponent<TestAmmunitionBonus>();
+				gameObject.AddComponent<SpeedAmmunitionBonus>();
+				bonus = GetComponent<SpeedAmmunitionBonus>();
 				break;
 			default:
 				break;

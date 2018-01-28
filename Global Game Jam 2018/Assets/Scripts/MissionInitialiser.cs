@@ -6,7 +6,7 @@ public class MissionInitialiser : MonoBehaviour
 {
 	public List<Ammunition> ammunitions;
 	public int initialAmmo = 3;
-	public List<PlayerController> players;
+	public PlayerController[] players;
 
 	public List<GameObject> ammoObjects;
 
@@ -23,6 +23,10 @@ public class MissionInitialiser : MonoBehaviour
 
 	void Start ()
 	{
+		players = FindObjectsOfType<PlayerController> ();
+		foreach (PlayerController player in players)
+			Debug.Log (player.gameObject.name);
+		
 		for (int i = 0; i < initialAmmo; i++) {
 			int rdm = Random.Range (0, ammunitions.Count);
 			foreach (PlayerController player in players) {
