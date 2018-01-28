@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4423448725655230}
   - component: {fileID: 33585729674442264}
-  - component: {fileID: 64424816039553020}
   - component: {fileID: 23777698658844854}
   m_Layer: 0
   m_Name: Plane
@@ -37,6 +36,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4799063672556928}
+  - component: {fileID: 114822745396851944}
   m_Layer: 0
   m_Name: Arrow1
   m_TagString: Untagged
@@ -112,17 +112,14 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1096587569822954}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!64 &64424816039553020
-MeshCollider:
+--- !u!114 &114822745396851944
+MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1096587569822954}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_GameObject: {fileID: 1573395759725486}
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35b3c437f3bf1c74383eb21571c33d32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
