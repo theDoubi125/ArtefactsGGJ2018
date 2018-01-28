@@ -16,6 +16,9 @@ public class ActionController : MonoBehaviour
     private float meleeReloadTime = 0;
     public float meleeReloadDuration = 1;
     private MeleeAttackCollider meleeHitbox;
+    public Vector2 meleePushback = new Vector2(10, 20);
+
+    private bool isTransmitterInRange { get { return meleeHitbox.isTransmitterInRange; } }
 
     void Start ()
     {
@@ -48,7 +51,11 @@ public class ActionController : MonoBehaviour
             List<HealthController> entitiesAtRange = meleeHitbox.GetEntitiesAtRange();
             for (int i = 0; i < entitiesAtRange.Count; i++)
             {
-                entitiesAtRange[i].GetComponent<Rigidbody>().AddForce(Vector3.up * 10, ForceMode.Impulse);
+                entitiesAtRange[i].GetComponentInChildren<Animator>().SetTrigger("Hit");
+                Vector3 direction = entitiesAtRange[i].transform.position - transform.position;
+                direction.y = 0;
+                direction = direction.normalized;
+                entitiesAtRange[i].GetComponent<Rigidbody>().AddForce(Vector3.up * meleePushback.y + direction * meleePushback.x, ForceMode.Impulse);
             }
         }
 	}
