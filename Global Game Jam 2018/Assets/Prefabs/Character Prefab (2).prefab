@@ -735,6 +735,7 @@ MonoBehaviour:
   personnalHUD: {fileID: 0}
   isOnGround: 0
   characterSprite: {fileID: 21300000, guid: 76606db01066b6644a62b25f8ba4f456, type: 3}
+  playerColor: {r: 1, g: 0.3529412, b: 0.94509804, a: 1}
 --- !u!114 &114201812091181616
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WeaponController : MonoBehaviour
 {
@@ -39,9 +40,13 @@ public class WeaponController : MonoBehaviour
 		}
 	}
 
-	public void AddHUDAmmo ()
+	public void AddHUDAmmo (Ammunition ammo)
 	{
 		GameObject newHUDAmmo = Instantiate (hudAmmo);
+		newHUDAmmo.transform.GetChild(0).gameObject.GetComponent<Image> ().color = player.playerColor;
+		newHUDAmmo.transform.GetChild(1).gameObject.GetComponent<Image> ().sprite = ammo.bonusSpritePositive;
+		newHUDAmmo.transform.GetChild(3).gameObject.GetComponent<Image> ().sprite = ammo.lvlSprite;
+		newHUDAmmo.transform.GetChild(4).gameObject.GetComponent<Image> ().sprite = ammo.behaviorSprite;
 		newHUDAmmo.transform.SetParent (hudAmmoParent, false);
 	}
 
@@ -95,7 +100,7 @@ public class WeaponController : MonoBehaviour
 		tmp.GetComponent<Ammunition>().bonuschoice = ammo.bonuschoice;
 		tmp.transform.SetParent (transform);
 		magazine.Add(tmp);
-		AddHUDAmmo ();
+		AddHUDAmmo (tmp.GetComponent<Ammunition>());
 		Destroy(ammo.gameObject);
 	}
 }

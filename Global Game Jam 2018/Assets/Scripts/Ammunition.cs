@@ -35,6 +35,11 @@ public class Ammunition : MonoBehaviour
 	public PlayerController shooter;
 	public bool isBillboard = false;
 	//TODO : Add graph variables
+	public Sprite bonusSpritePositive;
+	public Sprite bonusSpriteNegative;
+	public Color colorOwner;
+	public Sprite lvlSprite;
+	public Sprite behaviorSprite;
 	public Transform billboardApparence;
 
 	void Start ()

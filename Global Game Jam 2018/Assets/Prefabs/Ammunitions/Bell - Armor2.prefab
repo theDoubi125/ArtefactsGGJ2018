@@ -57,4 +57,9 @@ MonoBehaviour:
   bonus: {fileID: 0}
   shooter: {fileID: 0}
   isBillboard: 0
+  bonusSpritePositive: {fileID: 0}
+  bonusSpriteNegative: {fileID: 0}
+  colorOwner: {r: 0, g: 0, b: 0, a: 0}
+  lvlSprite: {fileID: 0}
+  behaviorSprite: {fileID: 0}
   billboardApparence: {fileID: 0}

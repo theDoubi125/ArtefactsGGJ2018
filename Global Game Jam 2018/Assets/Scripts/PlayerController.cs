@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
     public bool isOnGround = false;
 
 	public Sprite characterSprite;
+	public Color playerColor;
 
 	void Awake ()
     {
