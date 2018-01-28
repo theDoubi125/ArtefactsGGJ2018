@@ -534,7 +534,11 @@ MonoBehaviour:
   maxValue: 100
   startValue: 0
   transmissionSpeed: 20
-  bonusFactor: 1
+  bonusFactor:
+  - 0
+  - 0
+  - 0
+  - 0
   arePlayersChanneling: 00000000
   gauges:
   - {fileID: 4166676828551280}

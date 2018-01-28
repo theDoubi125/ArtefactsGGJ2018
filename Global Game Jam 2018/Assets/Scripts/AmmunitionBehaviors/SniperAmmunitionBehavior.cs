@@ -10,9 +10,9 @@ public class SniperAmmunitionBehavior : AmmunitionBehavior {
 		damage = 30;
 	}
 
-	virtual public void ApplyBehavior()
+	override public void ApplyBehavior()
 	{
 		if (GetComponent<Rigidbody>() != null)
-			GetComponent<Rigidbody>().AddForce(transform.forward*10000);
+			GetComponent<Rigidbody>().AddForce(transform.forward*1000);
 	}
 }
