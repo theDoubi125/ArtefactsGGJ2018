@@ -6,6 +6,8 @@ public class GameController : MonoBehaviour
 {
     public static GameController instance;
 
+    public bool isGamePaused;
+
     public List<int> controllers;
 
 	// Use this for initialization
@@ -57,5 +59,15 @@ public class GameController : MonoBehaviour
         }
         controllers.Add(playerId);
         return true;
+    }
+
+    public void PauseGame()
+    {
+        isGamePaused = true;
+    }
+
+    public void ResumeGame()
+    {
+        isGamePaused = false;
     }
 }
