@@ -12,11 +12,15 @@ public class ActionController : MonoBehaviour
     public float dashReloadDuration = 2;
 	public float dashReloadBonusFactor = 0;
     private float dashReloadTime = 0;
+    private float meleeReloadTime = 0;
+    public float meleeReloadDuration = 1;
+    private MeleeAttackCollider meleeHitbox;
 
     void Start ()
     {
         player = GetComponent<PlayerController>();
         body = GetComponent<Rigidbody>();
+        meleeHitbox = GetComponentInChildren<MeleeAttackCollider>();
 	}
 	
 	void Update ()
@@ -35,6 +39,16 @@ public class ActionController : MonoBehaviour
         {
             body.AddForce(transform.up * jumpForce.y + player.GetWeaponDirection() * jumpForce.x, ForceMode.VelocityChange);
             GetComponent<CharacterAnimation>().Jump();
+        }
+
+        string meleeInputName = player.GetPlayerInputPrefix() + "Melee";
+        if (meleeReloadTime <= 0 && Input.GetButtonDown(meleeInputName))
+        {
+            List<HealthController> entitiesAtRange = meleeHitbox.GetEntitiesAtRange();
+            for (int i = 0; i < entitiesAtRange.Count; i++)
+            {
+                entitiesAtRange[i].GetComponent<Rigidbody>().AddForce(Vector3.up * 10, ForceMode.Impulse);
+            }
         }
 	}
 }
