@@ -12,6 +12,7 @@ public class MissionInitialiser : MonoBehaviour
 	public Sprite[] behaviorSprites;
 	public Sprite[] bonusSprites;
 	public Sprite[] lvlSprites;
+	public Color[] colorStates;
 
 	public List<GameObject> ammoObjects;
 

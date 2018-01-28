@@ -13,6 +13,8 @@ public class WeaponController : MonoBehaviour
 	public Transform hudAmmoParent;
     public float InputThreshold = 0.5f;
     private bool isInputPressed = false;
+	public Color Freddygreen;
+	public Color Freddyred;
 
 	// Use this for initialization
 	void Start ()
@@ -48,9 +50,10 @@ public class WeaponController : MonoBehaviour
 	public void AddHUDAmmo (Ammunition ammo)
 	{
 		GameObject newHUDAmmo = Instantiate (hudAmmo);
-		newHUDAmmo.transform.GetChild(0).gameObject.GetComponent<Image> ().color = player.playerColor;
 		newHUDAmmo.transform.GetChild(1).gameObject.GetComponent<Image> ().sprite = ammo.bonusSpritePositive;
+		newHUDAmmo.transform.GetChild (1).gameObject.GetComponent<Image> ().color = Freddygreen;
 		newHUDAmmo.transform.GetChild(3).gameObject.GetComponent<Image> ().sprite = ammo.lvlSprite;
+		newHUDAmmo.transform.GetChild (3).gameObject.GetComponent<Image> ().color = Freddygreen;
 		newHUDAmmo.transform.GetChild(4).gameObject.GetComponent<Image> ().sprite = ammo.behaviorSprite;
 		newHUDAmmo.transform.SetParent (hudAmmoParent, false);
 	}
@@ -89,6 +92,10 @@ public class WeaponController : MonoBehaviour
 		Ammunition tmp = projectile.gameObject.GetComponent<Ammunition>();
 		tmp.behaviorchoice = magazine[0].GetComponent<Ammunition>().behaviorchoice;
 		tmp.bonuschoice = magazine[0].GetComponent<Ammunition>().bonuschoice;
+		tmp.behaviorSprite = magazine [0].GetComponent<Ammunition> ().behaviorSprite;
+		tmp.bonusSpriteNegative = magazine [0].GetComponent<Ammunition> ().bonusSpriteNegative;
+		tmp.bonusSpritePositive= magazine [0].GetComponent<Ammunition> ().bonusSpritePositive;
+		tmp.lvlSprite = magazine [0].GetComponent<Ammunition> ().lvlSprite;
 		tmp.shooter = player;
 		magazine [0].GetComponent<AmmunitionBonus> ().StopAction (player);
 		Destroy(magazine[0]);
@@ -103,6 +110,11 @@ public class WeaponController : MonoBehaviour
 		tmp.AddComponent<Ammunition>();
 		tmp.GetComponent<Ammunition>().behaviorchoice = ammo.behaviorchoice;
 		tmp.GetComponent<Ammunition>().bonuschoice = ammo.bonuschoice;
+		Debug.Log (ammo.bonusSpriteNegative + " | " + ammo.bonusSpritePositive + " | " + ammo.behaviorSprite);
+		tmp.GetComponent<Ammunition> ().bonusSpriteNegative = ammo.bonusSpriteNegative;
+		tmp.GetComponent<Ammunition> ().bonusSpritePositive= ammo.bonusSpritePositive;
+		tmp.GetComponent<Ammunition> ().behaviorSprite= ammo.behaviorSprite;
+		tmp.GetComponent<Ammunition> ().lvlSprite = ammo.lvlSprite;
 		tmp.transform.SetParent (transform);
 		magazine.Add(tmp);
 		AddHUDAmmo (tmp.GetComponent<Ammunition>());
