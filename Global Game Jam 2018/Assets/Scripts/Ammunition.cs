@@ -6,8 +6,10 @@ public class Ammunition : MonoBehaviour
 {
 	public enum behaviorEnum
 	{
-		TestAmmunitionBehavior,
-		Test2}
+		Base,
+		Bell,
+		Rebound,
+		Sniper}
 
 	;
 
@@ -19,15 +21,16 @@ public class Ammunition : MonoBehaviour
 		Health2,
 		Health,
 		Speed2,
-		Speed}
+		Speed,
+		Upload}
 
 	;
 
 	public behaviorEnum behaviorchoice;
 	public bonusEnum bonuschoice;
-//		[HideInInspector]
+	[HideInInspector]
 	public AmmunitionBehavior behavior;
-//		[HideInInspector]
+	[HideInInspector]
 	public AmmunitionBonus bonus;
 	public PlayerController shooter;
 	public bool isBillboard = false;
@@ -37,13 +40,21 @@ public class Ammunition : MonoBehaviour
 	void Start ()
 	{
 		switch (behaviorchoice) {
-		case behaviorEnum.TestAmmunitionBehavior:
-			gameObject.AddComponent<TestAmmunitionBehavior> ();
-			behavior = GetComponent<TestAmmunitionBehavior> ();
+		case behaviorEnum.Base:
+			gameObject.AddComponent<BaseAmmunitionBehavior> ();
+			behavior = GetComponent<BaseAmmunitionBehavior> ();
 			break;
-		case behaviorEnum.Test2:
-			gameObject.AddComponent<Test2AmmunitionBehavior> ();
-			behavior = GetComponent<Test2AmmunitionBehavior> ();
+		case behaviorEnum.Bell:
+			gameObject.AddComponent<BellAmmunitionBehavior> ();
+			behavior = GetComponent<BellAmmunitionBehavior> ();
+			break;
+		case behaviorEnum.Rebound:
+			gameObject.AddComponent<ReboundAmmunitionBehavior> ();
+			behavior = GetComponent<ReboundAmmunitionBehavior> ();
+			break;
+		case behaviorEnum.Sniper:
+			gameObject.AddComponent<SniperAmmunitionBehavior> ();
+			behavior = GetComponent<SniperAmmunitionBehavior> ();
 			break;
 		default:
 			break;
@@ -77,6 +88,10 @@ public class Ammunition : MonoBehaviour
 		case bonusEnum.Speed:
 			gameObject.AddComponent<SpeedAmmunitionBonus> ();
 			bonus = GetComponent<SpeedAmmunitionBonus> ();
+			break;
+		case bonusEnum.Upload:
+			gameObject.AddComponent<UploadAmmunitionBonus> ();
+			bonus = GetComponent<UploadAmmunitionBonus> ();
 			break;
 		default:
 			break;

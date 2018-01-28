@@ -4,17 +4,21 @@ using UnityEngine;
 
 public class UploadAmmunitionBonus : AmmunitionBonus
 {
+	public int BonusFactor = 2;
+	public int MalusFactor = -2;
 
-	//TODO
-	override public void ApplyBonus(PlayerController player)
+	override public void ApplyBonus (PlayerController player)
 	{
+		FindObjectOfType<Transmitter>().bonusFactor[player.playerIndex] = BonusFactor;
 	}
 
-	override public void ApplyMalus(PlayerController player)
+	override public void ApplyMalus (PlayerController player)
 	{
+		FindObjectOfType<Transmitter>().bonusFactor[player.playerIndex] = MalusFactor;
 	}
 
-	override public void StopAction(PlayerController player)
+	override public void StopAction (PlayerController player)
 	{
+		FindObjectOfType<Transmitter>().bonusFactor[player.playerIndex] = 1;
 	}
 }
