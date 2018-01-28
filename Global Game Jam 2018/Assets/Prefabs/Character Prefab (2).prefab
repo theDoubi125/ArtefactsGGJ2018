@@ -54,7 +54,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4212187421684324}
   - component: {fileID: 95214995755692354}
-  - component: {fileID: 114201812091181616}
   m_Layer: 0
   m_Name: Chara_mesh
   m_TagString: Untagged
@@ -160,6 +159,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4524812197523362}
   - component: {fileID: 136941384099474858}
+  - component: {fileID: 114010935711454228}
   m_Layer: 10
   m_Name: GameObject
   m_TagString: Untagged
@@ -252,7 +252,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1433379693370974}
-  m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
+  m_LocalRotation: {x: 0.25056288, y: 0, z: 0, w: 0.96810037}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -692,6 +692,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114010935711454228
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1435986922920250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e07c5c978f9073147bd7067d5b52fd82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  angle: 0
 --- !u!114 &114019296956292798
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -735,18 +747,6 @@ MonoBehaviour:
   personnalHUD: {fileID: 0}
   isOnGround: 0
   characterSprite: {fileID: 21300000, guid: 76606db01066b6644a62b25f8ba4f456, type: 3}
---- !u!114 &114201812091181616
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1109527226752716}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e07c5c978f9073147bd7067d5b52fd82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  angle: 0
 --- !u!114 &114275003483511070
 MonoBehaviour:
   m_ObjectHideFlags: 1

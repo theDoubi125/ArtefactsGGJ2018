@@ -37,6 +37,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4586066932514784}
   - component: {fileID: 136180577763265332}
+  - component: {fileID: 114734046900084786}
   m_Layer: 10
   m_Name: GameObject
   m_TagString: Untagged
@@ -102,7 +103,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4856067806372930}
   - component: {fileID: 95088931715065664}
-  - component: {fileID: 114502608225969074}
   m_Layer: 0
   m_Name: Chara_mesh
   m_TagString: Untagged
@@ -979,18 +979,6 @@ MonoBehaviour:
   meleeReloadDuration: 1
   meleePushback: {x: 10, y: 20}
   meleeDamage: 5
---- !u!114 &114502608225969074
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1461640718764238}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e07c5c978f9073147bd7067d5b52fd82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  angle: 0
 --- !u!114 &114604833673636634
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1026,6 +1014,18 @@ MonoBehaviour:
   personnalHUD: {fileID: 0}
   isOnGround: 0
   characterSprite: {fileID: 21300000, guid: f12c5996c61d34741a3fad9d54de7f03, type: 3}
+--- !u!114 &114734046900084786
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1293505654133326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e07c5c978f9073147bd7067d5b52fd82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  angle: 0
 --- !u!114 &114796638841376856
 MonoBehaviour:
   m_ObjectHideFlags: 1

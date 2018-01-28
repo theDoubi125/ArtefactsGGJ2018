@@ -17,12 +17,18 @@ public class ActionController : MonoBehaviour
     private MeleeAttackCollider meleeHitbox;
     public Vector2 meleePushback = new Vector2(10, 20);
 	public int meleeDamage = 5;
+    CharacterAnimation characterAnimation;
+    WeaponController weaponController;
+    Transmitter transmitter;
 
     void Start ()
     {
         player = GetComponent<PlayerController>();
         body = GetComponent<Rigidbody>();
         meleeHitbox = GetComponentInChildren<MeleeAttackCollider>();
+        characterAnimation = GetComponent<CharacterAnimation>();
+        weaponController = GetComponent<WeaponController>();
+        transmitter = FindObjectOfType<Transmitter>();
 	}
 	
 	void Update ()
@@ -35,7 +41,7 @@ public class ActionController : MonoBehaviour
             {
                 body.AddForce(player.GetMovementDirection() * dashForce, ForceMode.VelocityChange);
                 dashReloadTime = dashReloadDuration;
-                GetComponent<CharacterAnimation>().Dash();
+                characterAnimation.Dash();
             }
             if (dashReloadTime > 0)
                 dashReloadTime -= Time.deltaTime;
@@ -43,7 +49,7 @@ public class ActionController : MonoBehaviour
             if (player.isOnGround && Input.GetButtonDown(player.GetPlayerInputPrefix() + "Jump"))
             {
                 body.AddForce(transform.up * jumpForce.y + player.GetMovementDirection() * jumpForce.x, ForceMode.VelocityChange);
-                GetComponent<CharacterAnimation>().Jump();
+                characterAnimation.Jump();
             }
 
             string meleeInputName = player.GetPlayerInputPrefix() + "Melee";
@@ -51,11 +57,11 @@ public class ActionController : MonoBehaviour
                 meleeReloadTime -= Time.deltaTime;
             if (Input.GetButton(meleeInputName) && isInRangeOfTransmitter)
             {
-                FindObjectOfType<Transmitter>().arePlayersChanneling[player.playerIndex] = true;
+                transmitter.arePlayersChanneling[player.playerIndex] = true;
             }
             else
             {
-                FindObjectOfType<Transmitter>().arePlayersChanneling[player.playerIndex] = false;
+                transmitter.arePlayersChanneling[player.playerIndex] = false;
             }
 
             if (meleeReloadTime <= 0 && Input.GetButtonDown(meleeInputName))
@@ -69,10 +75,10 @@ public class ActionController : MonoBehaviour
                     direction = direction.normalized;
                     entitiesAtRange[i].GetComponent<Rigidbody>().AddForce(Vector3.up * meleePushback.y + direction * meleePushback.x, ForceMode.Impulse);
                     entitiesAtRange[i].MeleeHit(meleeDamage);
-                    GetComponent<WeaponController>().StealWeapon(entitiesAtRange[i].GetComponent<WeaponController>());
+                    weaponController.StealWeapon(entitiesAtRange[i].GetComponent<WeaponController>());
                 }
                 meleeReloadTime = meleeReloadDuration;
-                GetComponent<CharacterAnimation>().Attack();
+                characterAnimation.Attack();
             }
         }
 	}

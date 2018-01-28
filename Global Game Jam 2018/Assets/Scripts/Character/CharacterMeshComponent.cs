@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class CharacterMeshComponent : MonoBehaviour {
 
-    Quaternion initialRotation;
+    Vector3 initialRotation;
     public float angle;
 	void Awake ()
     {
-        initialRotation = transform.localRotation;
+        initialRotation = transform.localEulerAngles;;
 	}
 	
     public void SetRotation(float angle)
     {
-        transform.localEulerAngles = new Vector3(0, 0, angle);
+        transform.localEulerAngles = initialRotation + new Vector3(0, 0, angle);
     }
 }
