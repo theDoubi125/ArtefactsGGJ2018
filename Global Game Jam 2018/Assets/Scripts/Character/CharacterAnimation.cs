@@ -25,6 +25,11 @@ public class CharacterAnimation : MonoBehaviour {
     {
         animator.SetFloat("Blend", Mathf.Clamp(ratio, 0, 1));
     }
+
+    public void Attack()
+    {
+        animator.SetTrigger("CaC");
+    }
 	
 	void Update ()
     {
