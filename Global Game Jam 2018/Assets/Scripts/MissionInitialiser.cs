@@ -38,6 +38,7 @@ public class MissionInitialiser : MonoBehaviour
 				tmp.transform.SetParent (player.transform);
 				WeaponController weapon = player.GetComponent<WeaponController> ();
 				weapon.magazine.Add (tmp);
+				weapon.AddHUDAmmo ();
 			}
 		}
 	}
