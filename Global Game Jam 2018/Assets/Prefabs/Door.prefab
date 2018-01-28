@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4857487665646186}
   - component: {fileID: 33725539628112480}
-  - component: {fileID: 64951199559591938}
   - component: {fileID: 23923359282579870}
   m_Layer: 0
   m_Name: Background
@@ -561,20 +560,6 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1071612103167704}
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!64 &64951199559591938
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1071612103167704}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!65 &65532859202420940
 BoxCollider:
