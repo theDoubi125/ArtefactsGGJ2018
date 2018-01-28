@@ -11,6 +11,8 @@ public class WeaponController : MonoBehaviour
 	public PlayerController player;
 	public GameObject hudAmmo;
 	public Transform hudAmmoParent;
+	public Color Freddygreen;
+	public Color Freddyred;
 
 	// Use this for initialization
 	void Start ()
@@ -43,9 +45,10 @@ public class WeaponController : MonoBehaviour
 	public void AddHUDAmmo (Ammunition ammo)
 	{
 		GameObject newHUDAmmo = Instantiate (hudAmmo);
-		newHUDAmmo.transform.GetChild(0).gameObject.GetComponent<Image> ().color = player.playerColor;
 		newHUDAmmo.transform.GetChild(1).gameObject.GetComponent<Image> ().sprite = ammo.bonusSpritePositive;
+		newHUDAmmo.transform.GetChild (1).gameObject.GetComponent<Image> ().color = Freddygreen;
 		newHUDAmmo.transform.GetChild(3).gameObject.GetComponent<Image> ().sprite = ammo.lvlSprite;
+		newHUDAmmo.transform.GetChild (3).gameObject.GetComponent<Image> ().color = Freddygreen;
 		newHUDAmmo.transform.GetChild(4).gameObject.GetComponent<Image> ().sprite = ammo.behaviorSprite;
 		newHUDAmmo.transform.SetParent (hudAmmoParent, false);
 	}
