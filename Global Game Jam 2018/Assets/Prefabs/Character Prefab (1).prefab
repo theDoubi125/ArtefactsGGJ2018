@@ -111,22 +111,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1522788347014162
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4719699373990874}
-  - component: {fileID: 65349222828999300}
-  m_Layer: 0
-  m_Name: Hit_Col
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1595052585872026
 GameObject:
   m_ObjectHideFlags: 1
@@ -396,25 +380,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1971786985207762}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2.64}
+  m_LocalPosition: {x: 8.4, y: 1.3, z: 5.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4448195683856192}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4719699373990874
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1522788347014162}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.3100001, z: -3.270001}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4931431947409396}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4828714385892334
 Transform:
@@ -455,7 +426,6 @@ Transform:
   m_Children:
   - {fileID: 4697929464309854}
   - {fileID: 4236991136784752}
-  - {fileID: 4719699373990874}
   m_Father: {fileID: 4218947722238210}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -750,18 +720,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 2
---- !u!65 &65349222828999300
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1522788347014162}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.5, z: 0.5}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &65928371915417052
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -839,9 +797,12 @@ MonoBehaviour:
   maxSpeed: 5
   rotSpeed: 300
   minSpeedForRot: 1
+  groundDetectionRange: 1.2
   cursorDistance: 3
   initialRotation: {x: 0, y: 0, z: 0, w: 0}
   personnalHUD: {fileID: 0}
+  isOnGround: 0
+  characterSprite: {fileID: 21300000, guid: aa67062c66c1a004ea183b54e487c9db, type: 3}
 --- !u!114 &114461618793585888
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -855,7 +816,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dashForce: 30
   jumpForce: {x: 10, y: 20}
-  groundDetectionRange: 1.2
   dashReloadDuration: 2
   dashReloadBonusFactor: 0
   isInRangeOfTransmitter: 0
@@ -957,7 +917,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
+  m_Radius: 0.8
+  m_Height: 4
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}

@@ -7,7 +7,7 @@ public class Transmitter : MonoBehaviour
 	public float maxValue = 100f;
 	public float startValue = 0f;
 	public float transmissionSpeed = 1f;
-	public float bonusFactor = 1f;
+	public float[] bonusFactor = {1f, 1f, 1f, 1f};
 	public bool[] arePlayersChanneling = { false, false, false, false };
 	public Transform[] gauges;
 	public Vector3[] gaugesInitialPositions;
@@ -27,7 +27,7 @@ public class Transmitter : MonoBehaviour
 	{
 		for (int i = 0; i < 4; i++) {
 			if (arePlayersChanneling [i]) {
-				playerScores [i] += Time.deltaTime * transmissionSpeed * bonusFactor;
+				playerScores [i] += Time.deltaTime * transmissionSpeed * bonusFactor[i];
 				gauges[i].position = Vector3.Lerp (gaugesInitialPositions[i], gaugesFinalPositions[i], playerScores[i]/maxValue);
 				//TODO : if playerScore[i] >= maxValue then win
 			}
