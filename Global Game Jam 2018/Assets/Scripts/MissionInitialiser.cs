@@ -40,6 +40,7 @@ public class MissionInitialiser : MonoBehaviour
 
 		foreach (PlayerController player in players) {
 			hudPlayers [player.playerIndex].SetActive (true);
+			player.personnalHUD = hudPlayers [player.playerIndex];
 		}
 	}
 }
