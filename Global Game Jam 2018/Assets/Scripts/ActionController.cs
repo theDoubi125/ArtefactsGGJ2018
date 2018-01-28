@@ -11,6 +11,7 @@ public class ActionController : MonoBehaviour
     public float groundDetectionRange = 1.2f;
     public float dashReloadDuration = 2;
 	public float dashReloadBonusFactor = 0;
+	public bool isInRangeOfTransmitter = false;
     private float dashReloadTime = 0;
 
     void Start ()
