@@ -16,6 +16,7 @@ public class ActionController : MonoBehaviour
     public float meleeReloadDuration = 1;
     private MeleeAttackCollider meleeHitbox;
     public Vector2 meleePushback = new Vector2(10, 20);
+	public int meleeDamage = 5;
 
     void Start ()
     {
@@ -63,6 +64,8 @@ public class ActionController : MonoBehaviour
                 direction.y = 0;
                 direction = direction.normalized;
                 entitiesAtRange[i].GetComponent<Rigidbody>().AddForce(Vector3.up * meleePushback.y + direction * meleePushback.x, ForceMode.Impulse);
+				entitiesAtRange [i].MeleeHit (meleeDamage);
+				GetComponent<WeaponController> ().StealWeapon (entitiesAtRange [i].GetComponent<WeaponController> ());
             }
             meleeReloadTime = meleeReloadDuration;
             GetComponent<CharacterAnimation>().Attack();

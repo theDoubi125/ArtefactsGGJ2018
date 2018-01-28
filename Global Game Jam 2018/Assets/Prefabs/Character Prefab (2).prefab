@@ -752,6 +752,8 @@ MonoBehaviour:
   dashReloadBonusFactor: 0
   isInRangeOfTransmitter: 0
   meleeReloadDuration: 1
+  meleePushback: {x: 10, y: 20}
+  meleeDamage: 5
 --- !u!114 &114092293247191388
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -772,6 +774,7 @@ MonoBehaviour:
   minSpeedForRot: 1
   cursorDistance: 3
   initialRotation: {x: 0, y: 0, z: 0, w: 0}
+  personnalHUD: {fileID: 0}
 --- !u!114 &114201812091181616
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -837,6 +840,8 @@ MonoBehaviour:
   magazine: []
   maxCapacity: 3
   player: {fileID: 0}
+  hudAmmo: {fileID: 1246995441662066, guid: 749a1ae668d9d4242810e14ad860b620, type: 2}
+  hudAmmoParent: {fileID: 0}
 --- !u!114 &114995934424006448
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -848,6 +853,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23246e5e24736a746bd742e306220b5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTransmitterInRange: 0
 --- !u!135 &135437162150557008
 SphereCollider:
   m_ObjectHideFlags: 1
