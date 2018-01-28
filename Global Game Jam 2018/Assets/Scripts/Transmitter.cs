@@ -9,6 +9,7 @@ public class Transmitter : MonoBehaviour
 	public float transmissionSpeed = 1f;
 	public float bonusFactor = 1f;
 	public bool[] arePlayersChanneling = { false, false, false, false };
+	public Transform[] gauges;
 	public Vector3[] gaugesInitialPositions;
 	public Vector3[] gaugesFinalPositions;
 	public float[] playerScores = {0f,0f,0f,0f};
@@ -16,7 +17,9 @@ public class Transmitter : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		
+		for (int i = 0; i < 4; i++) {
+			gaugesInitialPositions [i] = gauges [i].position;
+		}
 	}
 	
 	// Update is called once per frame
@@ -25,7 +28,8 @@ public class Transmitter : MonoBehaviour
 		for (int i = 0; i < 4; i++) {
 			if (arePlayersChanneling [i]) {
 				playerScores [i] += Time.deltaTime * transmissionSpeed * bonusFactor;
-
+				gauges[i].position = Vector3.Lerp (gaugesInitialPositions[i], gaugesFinalPositions[i], playerScores[i]/maxValue);
+				//TODO : if playerScore[i] >= maxValue then win
 			}
 		}
 	}
@@ -35,8 +39,7 @@ public class Transmitter : MonoBehaviour
 		ActionController tmp = col.GetComponent<ActionController> ();
 		if (tmp != null)
 		{
-			//TODO : Ajouter variables dans ActionController
-			//tmp.isInRangeOfTransmitter = true;
+			tmp.isInRangeOfTransmitter = true;
 		}
 	}
 
@@ -45,8 +48,7 @@ public class Transmitter : MonoBehaviour
 		ActionController tmp = col.GetComponent<ActionController> ();
 		if (tmp != null)
 		{
-			//TODO : Ajouter variables dans ActionController
-			//tmp.isInRangeOfTransmitter = false;
+			tmp.isInRangeOfTransmitter = false;
 		}
 	}
 }
