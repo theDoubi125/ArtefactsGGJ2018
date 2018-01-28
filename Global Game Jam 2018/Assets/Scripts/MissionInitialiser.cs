@@ -22,12 +22,15 @@ public class MissionInitialiser : MonoBehaviour
 			tmp.GetComponent<Ammunition> ().bonuschoice = ammo.bonuschoice;
 			ammoObjects.Add (tmp);
 		}
+		players = FindObjectsOfType<PlayerController> ();
+		foreach (PlayerController player in players) {
+			hudPlayers [player.playerIndex].SetActive (true);
+			player.personnalHUD = hudPlayers [player.playerIndex];
+		}
 	}
 
 	void Start ()
 	{
-		players = FindObjectsOfType<PlayerController> ();
-
 		for (int i = 0; i < initialAmmo; i++) {
 			int rdm = Random.Range (0, ammunitions.Count);
 			foreach (PlayerController player in players) {
@@ -36,11 +39,6 @@ public class MissionInitialiser : MonoBehaviour
 				WeaponController weapon = player.GetComponent<WeaponController> ();
 				weapon.magazine.Add (tmp);
 			}
-		}
-
-		foreach (PlayerController player in players) {
-			hudPlayers [player.playerIndex].SetActive (true);
-			player.personnalHUD = hudPlayers [player.playerIndex];
 		}
 	}
 }
