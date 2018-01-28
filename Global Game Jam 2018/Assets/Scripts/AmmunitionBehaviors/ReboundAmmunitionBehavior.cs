@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ReboundAmmunitionBehavior : AmmunitionBehavior {
 
-	private int nbRebounds = 3;
+	private int nbRebounds = 1;
 
 	new void Start()
 	{
