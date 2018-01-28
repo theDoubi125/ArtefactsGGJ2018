@@ -30,6 +30,7 @@ public class Ammunition : MonoBehaviour
 //		[HideInInspector]
 	public AmmunitionBonus bonus;
 	public PlayerController shooter;
+	public bool isBillboard = false;
 	//TODO : Add graph variables
 	public Transform billboardApparence;
 
@@ -84,14 +85,8 @@ public class Ammunition : MonoBehaviour
 
 	void Update ()
 	{
-		if (!behavior.enabled) {
-			if (!behavior.hitPlayer) {
-				if (GetComponent<Rigidbody> () != null) {
-					ChangeToBillboard ();
-				}
-				GetComponent<AmmunitionBonus> ().ApplyMalus (shooter);
-			}
-		}
+		if (isBillboard)
+			GetComponent<AmmunitionBonus> ().ApplyMalus (shooter);
 	}
 
 	public void ApplyDamage ()
@@ -100,7 +95,7 @@ public class Ammunition : MonoBehaviour
 		behavior.hitPlayer.gameObject.GetComponent<WeaponController> ().HarvestCrate (this);
 	}
 
-	void ChangeToBillboard ()
+	public void ChangeToBillboard ()
 	{
 		DestroyObject (GetComponent<Rigidbody> ());
 		GetComponent<Collider> ().isTrigger = true;

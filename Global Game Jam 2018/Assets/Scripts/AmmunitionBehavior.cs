@@ -28,7 +28,9 @@ public class AmmunitionBehavior : MonoBehaviour
 		//TODO : need to change this to be able to injure oneself by rebound, need to change the origin of the bullet to do so.
 		if (hitPlayer == null)
 		{
-			enabled = false;
+			Ammunition tmp = GetComponent<Ammunition> ();
+			tmp.ChangeToBillboard ();
+			tmp.isBillboard = true;
 		}
 		else
 		{
