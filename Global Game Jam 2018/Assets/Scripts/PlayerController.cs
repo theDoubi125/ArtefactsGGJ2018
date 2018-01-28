@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public float maxSpeed = 5f;
     public float rotSpeed = 10;
     public float minSpeedForRot = 1;
+    public float groundDetectionRange = 1.2f;
 
     private Vector3 weaponDirection = Vector2.right;
 
@@ -24,6 +25,7 @@ public class PlayerController : MonoBehaviour
     private Quaternion targetRotation;
 
     private Vector3 currentTargetDirection;
+    private Vector3 currentMovementDirection;
 
     public Quaternion initialRotation;
 
@@ -31,6 +33,8 @@ public class PlayerController : MonoBehaviour
     private CharacterMeshComponent characterMesh;
 
 	public GameObject personnalHUD;
+
+    public bool isOnGround = false;
 
 	void Awake ()
     {
@@ -50,12 +54,18 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        body.AddForce(acceleration * (new Vector3(Input.GetAxis(playerInputPrefix + "Move_X"), 0, Input.GetAxis(playerInputPrefix + "Move_Y"))).normalized);
+        Vector3 movementDirection = new Vector3(Input.GetAxis(playerInputPrefix + "Move_X"), 0, Input.GetAxis(playerInputPrefix + "Move_Y"));
+        if (isOnGround)
+            body.AddForce(acceleration * movementDirection.normalized);
+        else
+            body.AddForce(acceleration / 5 * movementDirection.normalized);
+        if (movementDirection.magnitude > directionMinLength)
+            currentMovementDirection = movementDirection;
     }
 	
 	void Update ()
     {
-        
+        isOnGround = Physics.Raycast(transform.position, Vector3.down, groundDetectionRange);
         Vector3 targetDirection = new Vector3(Input.GetAxis(playerInputPrefix + "Look_X"), 0, -Input.GetAxis(playerInputPrefix + "Look_Y"));
         if (targetDirection.sqrMagnitude > directionMinLength * directionMinLength)
         {
@@ -84,6 +94,11 @@ public class PlayerController : MonoBehaviour
     public Vector3 GetWeaponDirection()
     {
         return currentTargetDirection;
+    }
+
+    public Vector3 GetMovementDirection()
+    {
+        return currentMovementDirection;
     }
 
     public string GetPlayerInputPrefix()

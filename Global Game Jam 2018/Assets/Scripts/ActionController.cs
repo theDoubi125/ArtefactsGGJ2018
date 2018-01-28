@@ -8,7 +8,6 @@ public class ActionController : MonoBehaviour
     private Rigidbody body;
     public float dashForce = 10;
     public Vector2 jumpForce = new Vector2(3, 20);
-    public float groundDetectionRange = 1.2f;
     public float dashReloadDuration = 2;
 	public float dashReloadBonusFactor = 0;
 	public bool isInRangeOfTransmitter = false;
@@ -32,20 +31,22 @@ public class ActionController : MonoBehaviour
         string dashInputName = player.GetPlayerInputPrefix() + "Dash";
 		if (dashReloadTime + dashReloadBonusFactor <= 0 && Input.GetButtonDown(dashInputName))
         {
-            body.AddForce(player.GetWeaponDirection() * dashForce, ForceMode.VelocityChange);
+            body.AddForce(player.GetMovementDirection() * dashForce, ForceMode.VelocityChange);
             dashReloadTime = dashReloadDuration;
             GetComponent<CharacterAnimation>().Dash();
         }
         if (dashReloadTime > 0)
             dashReloadTime -= Time.deltaTime;
 		
-        if (Physics.Raycast(transform.position, Vector3.down, groundDetectionRange) && Input.GetButtonDown(player.GetPlayerInputPrefix() + "Jump"))
+        if (player.isOnGround && Input.GetButtonDown(player.GetPlayerInputPrefix() + "Jump"))
         {
-            body.AddForce(transform.up * jumpForce.y + player.GetWeaponDirection() * jumpForce.x, ForceMode.VelocityChange);
+            body.AddForce(transform.up * jumpForce.y + player.GetMovementDirection() * jumpForce.x, ForceMode.VelocityChange);
             GetComponent<CharacterAnimation>().Jump();
         }
 
         string meleeInputName = player.GetPlayerInputPrefix() + "Melee";
+        if (meleeReloadTime > 0)
+            meleeReloadTime -= Time.deltaTime;
         if (meleeReloadTime <= 0 && Input.GetButtonDown(meleeInputName))
         {
             List<HealthController> entitiesAtRange = meleeHitbox.GetEntitiesAtRange();
@@ -57,6 +58,8 @@ public class ActionController : MonoBehaviour
                 direction = direction.normalized;
                 entitiesAtRange[i].GetComponent<Rigidbody>().AddForce(Vector3.up * meleePushback.y + direction * meleePushback.x, ForceMode.Impulse);
             }
+            meleeReloadTime = meleeReloadDuration;
+            GetComponent<CharacterAnimation>().Attack();
         }
 	}
 }

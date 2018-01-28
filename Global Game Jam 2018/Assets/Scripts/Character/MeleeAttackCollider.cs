@@ -9,7 +9,6 @@ public class MeleeAttackCollider : MonoBehaviour
 
     void OnTriggerEnter(Collider collider)
     {
-        Debug.Log(collider);
         HealthController health = collider.GetComponentInParent<HealthController>();
         if (health != null)
         {
