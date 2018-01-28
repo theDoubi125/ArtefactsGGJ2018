@@ -45,10 +45,15 @@ public class PlayerController : MonoBehaviour
             cursorTransform = cursorController.transform;
         characterMesh = transform.GetComponentInChildren<CharacterMeshComponent>();
 	}
+
+    void FixedUpdate()
+    {
+        body.AddForce(acceleration * (new Vector3(Input.GetAxis(playerInputPrefix + "Move_X"), 0, Input.GetAxis(playerInputPrefix + "Move_Y"))).normalized);
+    }
 	
 	void Update ()
     {
-        body.AddForce(acceleration * (new Vector3(Input.GetAxis(playerInputPrefix + "Move_X"), 0, Input.GetAxis(playerInputPrefix + "Move_Y"))).normalized);
+        
         Vector3 targetDirection = new Vector3(Input.GetAxis(playerInputPrefix + "Look_X"), 0, -Input.GetAxis(playerInputPrefix + "Look_Y"));
         if (targetDirection.sqrMagnitude > directionMinLength * directionMinLength)
         {

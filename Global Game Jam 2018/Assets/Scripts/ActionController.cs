@@ -24,7 +24,7 @@ public class ActionController : MonoBehaviour
         string dashInputName = player.GetPlayerInputPrefix() + "Dash";
 		if (dashReloadTime + dashReloadBonusFactor <= 0 && Input.GetButtonDown(dashInputName))
         {
-            body.AddForce(transform.right * dashForce, ForceMode.VelocityChange);
+            body.AddForce(player.GetWeaponDirection() * dashForce, ForceMode.VelocityChange);
             dashReloadTime = dashReloadDuration;
             GetComponent<CharacterAnimation>().Dash();
         }
@@ -33,7 +33,7 @@ public class ActionController : MonoBehaviour
 		
         if (Physics.Raycast(transform.position, Vector3.down, groundDetectionRange) && Input.GetButtonDown(player.GetPlayerInputPrefix() + "Jump"))
         {
-            body.AddForce(transform.up * jumpForce.y + transform.right * jumpForce.x, ForceMode.VelocityChange);
+            body.AddForce(transform.up * jumpForce.y + player.GetWeaponDirection() * jumpForce.x, ForceMode.VelocityChange);
             GetComponent<CharacterAnimation>().Jump();
         }
 	}
