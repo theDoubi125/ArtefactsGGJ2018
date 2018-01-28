@@ -8,6 +8,9 @@ public class MissionInitialiser : MonoBehaviour
 	public int initialAmmo = 3;
 	public PlayerController[] players;
 
+	public Ammunition.behaviorEnum behaviorchoice;
+	public Ammunition.bonusEnum bonuschoice;
+
 	public List<GameObject> ammoObjects;
 
 	// Use this for initialization
@@ -16,7 +19,9 @@ public class MissionInitialiser : MonoBehaviour
 		foreach (Ammunition ammo in ammunitions) {
 			GameObject tmp = new GameObject ();
 			tmp.name = ammo.name;
-			tmp.AddComponent (ammo.GetType());
+			tmp.AddComponent<Ammunition> ();
+			tmp.GetComponent<Ammunition> ().behaviorchoice = ammo.behaviorchoice;
+			tmp.GetComponent<Ammunition> ().bonuschoice = ammo.bonuschoice;
 			ammoObjects.Add (tmp);
 		}
 	}
@@ -24,8 +29,6 @@ public class MissionInitialiser : MonoBehaviour
 	void Start ()
 	{
 		players = FindObjectsOfType<PlayerController> ();
-		foreach (PlayerController player in players)
-			Debug.Log (player.gameObject.name);
 		
 		for (int i = 0; i < initialAmmo; i++) {
 			int rdm = Random.Range (0, ammunitions.Count);
