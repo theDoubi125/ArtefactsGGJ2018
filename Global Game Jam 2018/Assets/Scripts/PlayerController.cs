@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 currentTargetDirection;
 
-	void Start ()
+	void Awake ()
     {
         if (!GameController.instance.IsPlayerControlled(playerIndex))
             gameObject.SetActive(false);
