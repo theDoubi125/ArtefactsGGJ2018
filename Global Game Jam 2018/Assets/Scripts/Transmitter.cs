@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Transmitter : MonoBehaviour
 {
@@ -13,6 +14,9 @@ public class Transmitter : MonoBehaviour
 	public Vector3[] gaugesInitialPositions;
 	public Vector3[] gaugesFinalPositions;
 	public float[] playerScores = {0f,0f,0f,0f};
+	public GameObject winGUI;
+	private bool won = false;
+	private PlayerController[] players;
 	private int animCounter = 0;
 
 	// Use this for initialization
@@ -21,24 +25,41 @@ public class Transmitter : MonoBehaviour
 		for (int i = 0; i < 4; i++) {
 			gaugesInitialPositions [i] = gauges [i].position;
 		}
+		players = FindObjectsOfType<PlayerController> ();
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
-		animCounter = 0;
-		for (int i = 0; i < 4; i++) {
-			if (arePlayersChanneling [i]) {
-				animCounter++;
-				playerScores [i] += Time.deltaTime * transmissionSpeed * bonusFactor[i];
-				gauges[i].position = Vector3.Lerp (gaugesInitialPositions[i], gaugesFinalPositions[i], playerScores[i]/maxValue);
-				//TODO : if playerScore[i] >= maxValue then win
+		if (!won) {
+			animCounter = 0;
+			for (int i = 0; i < 4; i++) {
+				if (arePlayersChanneling [i]) {
+					animCounter++;
+					playerScores [i] += Time.deltaTime * transmissionSpeed * bonusFactor [i];
+					gauges [i].position = Vector3.Lerp (gaugesInitialPositions [i], gaugesFinalPositions [i], playerScores [i] / maxValue);
+					if (playerScores [i] >= maxValue) {
+						Win (i);
+					}
+				}
+			}
+			if (animCounter > 0 && !GetComponent<Animation> ().isPlaying)
+				GetComponent<Animation> ().Play ();
+			if (animCounter == 0)
+				GetComponent<Animation> ().Stop ();
+		}
+	}
+
+	void Win(int winner)
+	{
+		winGUI.SetActive (true);
+		PlayerController[] players = FindObjectsOfType<PlayerController> ();
+		foreach (PlayerController player in players) {
+			if (player.playerIndex == winner) {
+				winGUI.transform.GetChild (4).gameObject.GetComponent<Image> ().sprite = player.characterSprite;
 			}
 		}
-		if (animCounter > 0 && !GetComponent<Animation> ().isPlaying)
-			GetComponent<Animation> ().Play ();
-		if (animCounter == 0)
-			GetComponent<Animation> ().Stop ();
+
 	}
 
 	void OnTriggerEnter(Collider col)
