@@ -22,12 +22,12 @@ public class Transmitter : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		for (int i = 0; i < 4; i++)
-		{
+		for (int i = 0; i < 4; i++) {
 			if (arePlayersChanneling [i]) {
 				playerScores [i] += Time.deltaTime * transmissionSpeed * bonusFactor;
 
 			}
+		}
 	}
 
 	void OnTriggerEnter(Collider col)
