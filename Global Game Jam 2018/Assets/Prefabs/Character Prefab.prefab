@@ -312,7 +312,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1744204026639706}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.13865465, y: 0.5622771, z: 2.0515938}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4083133005517532}
@@ -554,7 +554,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 9d5c03b3f6890d4498b323d2c06fa5ce, type: 3}
+  - {fileID: 2100000, guid: 610fc209699dbe74c82796195ff6cad4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -840,6 +840,7 @@ MonoBehaviour:
   groundDetectionRange: 1.2
   dashReloadDuration: 2
   dashReloadBonusFactor: 0
+  isInRangeOfTransmitter: 0
 --- !u!114 &114502608225969074
 MonoBehaviour:
   m_ObjectHideFlags: 1
