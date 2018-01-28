@@ -5,7 +5,7 @@ AnimationClip:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: End_Game_WIN
+  m_Name: End_Game_WIN 1
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -353,7 +353,7 @@ AnimationClip:
         tangentMode: 136
       - serializedVersion: 2
         time: 3.7833333
-        value: -207
+        value: -248
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -429,7 +429,7 @@ AnimationClip:
         tangentMode: 136
       - serializedVersion: 2
         time: 4.2833333
-        value: 175
+        value: 226
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -935,7 +935,7 @@ AnimationClip:
         tangentMode: 136
       - serializedVersion: 2
         time: 3.7833333
-        value: -207
+        value: -248
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -1179,7 +1179,7 @@ AnimationClip:
         tangentMode: 136
       - serializedVersion: 2
         time: 4.2833333
-        value: 175
+        value: 226
         inSlope: 0
         outSlope: 0
         tangentMode: 136
