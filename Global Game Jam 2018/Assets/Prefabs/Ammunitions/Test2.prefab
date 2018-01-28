@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   behaviorchoice: 1
-  bonuschoice: 0
+  bonuschoice: 1
   behavior: {fileID: 0}
   bonus: {fileID: 0}
   shooter: {fileID: 0}

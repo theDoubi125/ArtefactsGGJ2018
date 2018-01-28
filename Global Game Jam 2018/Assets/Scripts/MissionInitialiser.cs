@@ -7,9 +7,7 @@ public class MissionInitialiser : MonoBehaviour
 	public List<Ammunition> ammunitions;
 	public int initialAmmo = 3;
 	public PlayerController[] players;
-
-	public Ammunition.behaviorEnum behaviorchoice;
-	public Ammunition.bonusEnum bonuschoice;
+	public GameObject[] hudPlayers;
 
 	public List<GameObject> ammoObjects;
 
@@ -29,15 +27,19 @@ public class MissionInitialiser : MonoBehaviour
 	void Start ()
 	{
 		players = FindObjectsOfType<PlayerController> ();
-		
+
 		for (int i = 0; i < initialAmmo; i++) {
 			int rdm = Random.Range (0, ammunitions.Count);
 			foreach (PlayerController player in players) {
-				WeaponController weapon = player.GetComponent<WeaponController> ();
 				GameObject tmp = Instantiate (ammoObjects [rdm]);
 				tmp.transform.SetParent (player.transform);
+				WeaponController weapon = player.GetComponent<WeaponController> ();
 				weapon.magazine.Add (tmp);
 			}
+		}
+
+		foreach (PlayerController player in players) {
+			hudPlayers [player.playerIndex].SetActive (true);
 		}
 	}
 }
