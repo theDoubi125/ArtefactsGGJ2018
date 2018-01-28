@@ -5,6 +5,7 @@ using UnityEngine;
 public class MeleeAttackCollider : MonoBehaviour
 {
     List<HealthController> entitiesAtRange = new List<HealthController>();
+    public bool isTransmitterInRange = false;
 
     void OnTriggerEnter(Collider collider)
     {
@@ -15,6 +16,10 @@ public class MeleeAttackCollider : MonoBehaviour
             entitiesAtRange.Add(health);
             Debug.Log(entitiesAtRange.Count);
         }
+        else if (collider.GetComponent<Transmitter>() != null)
+        {
+            isTransmitterInRange = true;
+        }
     }
 
     void OnTriggerExit(Collider collider)
@@ -24,6 +29,10 @@ public class MeleeAttackCollider : MonoBehaviour
         {
             entitiesAtRange.Remove(health);
             Debug.Log(entitiesAtRange.Count);
+        }
+        else if (collider.GetComponent<Transmitter>() != null)
+        {
+            isTransmitterInRange = false;
         }
     }
 
