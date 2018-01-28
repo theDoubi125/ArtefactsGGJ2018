@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ArmorAmmunitionBonus : AmmunitionBonus
 {
-	public int BonusFactor = 0.5;
-	public int MalusFactor = 1.5;
+	public float BonusFactor = 0.5f;
+	public float MalusFactor = 1.5f;
 
 	override public void ApplyBonus (PlayerController player)
 	{
