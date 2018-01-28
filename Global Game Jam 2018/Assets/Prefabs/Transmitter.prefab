@@ -595,7 +595,16 @@ MonoBehaviour:
   transmissionSpeed: 1
   bonusFactor: 1
   arePlayersChanneling: 00000000
-  gaugesInitialPositions: []
+  gauges:
+  - {fileID: 4166676828551280}
+  - {fileID: 4381533865000850}
+  - {fileID: 4039245106979492}
+  - {fileID: 4836962408181486}
+  gaugesInitialPositions:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
   gaugesFinalPositions:
   - {x: -0.78, y: 4, z: -0.66}
   - {x: -0.27, y: 4, z: -0.8}

@@ -52,7 +52,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   behaviorchoice: 0
-  bonuschoice: 0
+  bonuschoice: 2
   behavior: {fileID: 0}
   bonus: {fileID: 0}
-  PlayerId: 0
+  shooter: {fileID: 0}
+  billboardApparence: {fileID: 0}
