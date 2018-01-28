@@ -31,6 +31,16 @@ public class HealthController : MonoBehaviour
 		}
 	}
 
+	public void MeleeHit(int meleeDamage)
+	{
+		currentHP -= meleeDamage;
+		slider.value = currentHP;
+		if (currentHP == 0)
+		{
+			Death ();
+		}
+	}
+
 	public void Death ()
 	{
 		GetComponent<PlayerController> ().enabled = false;

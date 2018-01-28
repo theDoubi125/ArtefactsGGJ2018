@@ -50,6 +50,26 @@ public class WeaponController : MonoBehaviour
 		Destroy(hudAmmoParent.transform.GetChild(0).gameObject);
 	}
 
+	public void StealWeapon(WeaponController victim)
+	{
+		if (victim.magazine.Count > 0) {
+			Transform projectile = Instantiate (projectilePrefab);
+			projectile.position = victim.transform.position + player.GetWeaponDirection () * 8f;
+			projectile.rotation = Quaternion.LookRotation (player.GetWeaponDirection ()); 	
+			projectile.gameObject.AddComponent <Ammunition> ();
+			Ammunition tmp = projectile.gameObject.GetComponent<Ammunition> ();
+			tmp.behaviorchoice = victim.magazine [0].GetComponent<Ammunition> ().behaviorchoice;
+			tmp.bonuschoice = victim.magazine [0].GetComponent<Ammunition> ().bonuschoice;
+			tmp.shooter = victim.player;
+			victim.magazine [0].GetComponent<AmmunitionBonus> ().StopAction (player);
+			Destroy (victim.magazine [0]);
+			victim.magazine.RemoveAt (0);
+			victim.DeleteHUDAmmo ();
+			tmp.isBillboard = true;
+			tmp.ChangeToBillboard ();
+		}
+	}
+
 	public void CreateProjectile()
 	{
 		Transform projectile = Instantiate(projectilePrefab);
