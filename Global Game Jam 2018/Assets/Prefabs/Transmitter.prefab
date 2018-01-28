@@ -19,7 +19,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4583394204122352}
-  - component: {fileID: 111417854279652504}
   m_Layer: 0
   m_Name: Antena
   m_TagString: Untagged
@@ -90,6 +89,7 @@ GameObject:
   - component: {fileID: 4888341671565186}
   - component: {fileID: 136063088778482758}
   - component: {fileID: 114632340102286466}
+  - component: {fileID: 111945372489468068}
   m_Layer: 0
   m_Name: Transmitter
   m_TagString: Untagged
@@ -157,7 +157,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1836367797917718}
   m_LocalRotation: {x: -0, y: -0.07401317, z: -0, w: 0.9972573}
-  m_LocalPosition: {x: 0.31, y: 4.12, z: -0.77}
+  m_LocalPosition: {x: 0.31, y: -0.5, z: -0.77}
   m_LocalScale: {x: 0.39793998, y: 4.8705497, z: 1}
   m_Children: []
   m_Father: {fileID: 4888341671565186}
@@ -170,7 +170,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1436873142836406}
   m_LocalRotation: {x: -0, y: 0.27550486, z: -0, w: 0.9612998}
-  m_LocalPosition: {x: -0.78000003, y: 4.07, z: -0.65999997}
+  m_LocalPosition: {x: -0.78000003, y: -0.5, z: -0.65999997}
   m_LocalScale: {x: 0.39794338, y: 4.8705544, z: 1}
   m_Children: []
   m_Father: {fileID: 4888341671565186}
@@ -183,7 +183,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1712108572900764}
   m_LocalRotation: {x: -0, y: 0.020985434, z: -0, w: 0.9997798}
-  m_LocalPosition: {x: -0.27, y: 4.12, z: -0.8}
+  m_LocalPosition: {x: -0.27, y: -0.5, z: -0.8}
   m_LocalScale: {x: 0.39793995, y: 4.8705497, z: 1}
   m_Children: []
   m_Father: {fileID: 4888341671565186}
@@ -215,7 +215,7 @@ Transform:
   - {fileID: 4763780829813032}
   m_Father: {fileID: 4888341671565186}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 811.565, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 733.27185, z: 0}
 --- !u!4 &4763780829813032
 Transform:
   m_ObjectHideFlags: 1
@@ -236,7 +236,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1400511889458634}
   m_LocalRotation: {x: -0, y: -0.20965149, z: -0, w: 0.9777762}
-  m_LocalPosition: {x: 0.77, y: 4.07, z: -0.64}
+  m_LocalPosition: {x: 0.77, y: -0.5, z: -0.64}
   m_LocalScale: {x: 0.39793992, y: 4.8705497, z: 0.9999999}
   m_Children: []
   m_Father: {fileID: 4888341671565186}
@@ -564,12 +564,12 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!111 &111417854279652504
+--- !u!111 &111945372489468068
 Animation:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1177598867448866}
+  m_GameObject: {fileID: 1587234314716602}
   m_Enabled: 1
   serializedVersion: 3
   m_Animation: {fileID: 7400000, guid: 0937ee6d46ca17940b2e0ada30c71df5, type: 2}
@@ -590,6 +590,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 282df2e9be719d948bd32d49678f27c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxValue: 100
+  startValue: 0
+  transmissionSpeed: 1
+  bonusFactor: 1
+  arePlayersChanneling: 00000000
+  gaugesInitialPositions: []
+  gaugesFinalPositions:
+  - {x: -0.78, y: 4, z: -0.66}
+  - {x: -0.27, y: 4, z: -0.8}
+  - {x: 0.31, y: 4, z: -0.8}
+  - {x: 0.77, y: 4, z: -0.66}
+  playerScores:
+  - 0
+  - 0
+  - 0
+  - 0
 --- !u!136 &136063088778482758
 CapsuleCollider:
   m_ObjectHideFlags: 1
