@@ -13,7 +13,6 @@ public class MeleeAttackCollider : MonoBehaviour
         if (health != null)
         {
             entitiesAtRange.Add(health);
-            Debug.Log(entitiesAtRange.Count);
         }
         else if (collider.GetComponent<Transmitter>() != null)
         {
