@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -36,6 +37,8 @@ public class PlayerController : MonoBehaviour
 
     public bool isOnGround = false;
 
+	public Sprite characterSprite;
+
 	void Awake ()
     {
         if (!GameController.instance.IsPlayerControlled(playerIndex))
@@ -50,6 +53,11 @@ public class PlayerController : MonoBehaviour
         if(cursorController != null)
             cursorTransform = cursorController.transform;
         characterMesh = transform.GetComponentInChildren<CharacterMeshComponent>();
+	}
+
+	void Start ()
+	{
+		personnalHUD.transform.GetChild(0).GetComponent<Image>().sprite = characterSprite;
 	}
 
     void FixedUpdate()
