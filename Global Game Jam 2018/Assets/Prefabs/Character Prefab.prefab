@@ -718,6 +718,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   acceleration: 70
+  defaultAcceleration: 70
   playerIndex: 1
   directionMinLength: 0.5
   maxSpeed: 5
@@ -739,9 +740,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 4768133177856040, guid: 68891ac949d7194429bb52487c83339d,
     type: 2}
   magazine: []
-  maxCapacity: 3
-  ammunitions:
-  - {fileID: 114965008342062246, guid: e24f1e8bdc40ba0469fa748aff1d6aff, type: 2}
+  maxCapacity: 5
   player: {fileID: 0}
 --- !u!135 &135360464440530286
 SphereCollider:

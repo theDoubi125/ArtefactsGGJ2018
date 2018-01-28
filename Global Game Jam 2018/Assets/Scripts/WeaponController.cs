@@ -46,6 +46,7 @@ public class WeaponController : MonoBehaviour
 		tmp.behaviorchoice = magazine[0].GetComponent<Ammunition>().behaviorchoice;
 		tmp.bonuschoice = magazine[0].GetComponent<Ammunition>().bonuschoice;
 		tmp.shooter = player;
+		magazine [0].GetComponent<AmmunitionBonus> ().StopAction (player);
 		Destroy(magazine[0]);
 		magazine.RemoveAt(0);
 	}

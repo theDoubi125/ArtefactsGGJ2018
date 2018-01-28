@@ -6,4 +6,5 @@ public abstract class AmmunitionBonus : MonoBehaviour
 {
 	abstract public void ApplyBonus (PlayerController player);
 	abstract public void ApplyMalus (PlayerController player);
+	abstract public void StopAction (PlayerController player);
 }

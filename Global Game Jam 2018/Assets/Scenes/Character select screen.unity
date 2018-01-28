@@ -511,7 +511,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputsToCheck:
   - Action1
-  timerDuration: 5
+  timerDuration: 0.5
   gameSceneName: Level_01
 --- !u!1 &1449604887
 GameObject:
