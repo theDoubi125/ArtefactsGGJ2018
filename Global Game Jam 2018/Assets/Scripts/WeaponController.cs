@@ -73,6 +73,10 @@ public class WeaponController : MonoBehaviour
 			Ammunition tmp = projectile.gameObject.GetComponent<Ammunition> ();
 			tmp.behaviorchoice = victim.magazine [0].GetComponent<Ammunition> ().behaviorchoice;
 			tmp.bonuschoice = victim.magazine [0].GetComponent<Ammunition> ().bonuschoice;
+			tmp.behaviorSprite = magazine [0].GetComponent<Ammunition> ().behaviorSprite;
+			tmp.bonusSpriteNegative = magazine [0].GetComponent<Ammunition> ().bonusSpriteNegative;
+			tmp.bonusSpritePositive= magazine [0].GetComponent<Ammunition> ().bonusSpritePositive;
+			tmp.lvlSprite = magazine [0].GetComponent<Ammunition> ().lvlSprite;
 			tmp.shooter = victim.player;
 			victim.magazine [0].GetComponent<AmmunitionBonus> ().StopAction (player);
 			Destroy (victim.magazine [0]);
