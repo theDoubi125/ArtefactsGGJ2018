@@ -28,7 +28,7 @@ public class CharacterAnimation : MonoBehaviour {
 
     public void Attack()
     {
-        animator.SetTrigger("CaC");
+        animator.SetTrigger("cac");
     }
 	
 	void Update ()
