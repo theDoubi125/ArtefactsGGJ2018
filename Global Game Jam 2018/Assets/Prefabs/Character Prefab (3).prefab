@@ -948,7 +948,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   acceleration: 70
-  defaultAcceleration: 10
+  defaultAcceleration: 70
   playerIndex: 3
   directionMinLength: 0.5
   maxSpeed: 5
