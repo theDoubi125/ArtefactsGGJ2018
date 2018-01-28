@@ -887,8 +887,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6029605c34dc0334e83a8c6d40027532, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 4768133177856040, guid: 68891ac949d7194429bb52487c83339d,
-    type: 2}
+  bullet: {fileID: 4144213197857450, guid: 005079b2100d62949b824ab46be302a5, type: 2}
   magazine: []
   maxCapacity: 3
   player: {fileID: 0}

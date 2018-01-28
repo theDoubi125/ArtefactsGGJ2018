@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class WeaponController : MonoBehaviour
 {
-	public Transform projectilePrefab;
+	public Transform bullet;
 	public List<GameObject> magazine;
 	public int maxCapacity = 5;
 	public PlayerController player;
@@ -61,7 +61,7 @@ public class WeaponController : MonoBehaviour
 	public void StealWeapon(WeaponController victim)
 	{
 		if (victim.magazine.Count > 0) {
-			Transform projectile = Instantiate (projectilePrefab);
+			Transform projectile = Instantiate (bullet);
 			projectile.position = victim.transform.position + player.GetWeaponDirection () * 8f;
 			projectile.rotation = Quaternion.LookRotation (player.GetWeaponDirection ()); 	
 			projectile.gameObject.AddComponent <Ammunition> ();
@@ -80,7 +80,7 @@ public class WeaponController : MonoBehaviour
 
 	public void CreateProjectile()
 	{
-		Transform projectile = Instantiate(projectilePrefab);
+		Transform projectile = Instantiate(bullet);
         projectile.position = transform.position + player.GetWeaponDirection() * 0.5f;
         projectile.rotation = Quaternion.LookRotation(player.GetWeaponDirection()); 	
 		projectile.gameObject.AddComponent <Ammunition>();
