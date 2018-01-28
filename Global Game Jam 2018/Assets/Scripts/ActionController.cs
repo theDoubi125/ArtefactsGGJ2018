@@ -83,7 +83,9 @@ public class ActionController : MonoBehaviour
                     direction = direction.normalized;
                     entitiesAtRange[i].GetComponent<Rigidbody>().AddForce(Vector3.up * meleePushback.y + direction * meleePushback.x, ForceMode.Impulse);
                     entitiesAtRange[i].MeleeHit(meleeDamage);
-                    weaponController.StealWeapon(entitiesAtRange[i].GetComponent<WeaponController>());
+					if (entitiesAtRange [i].GetComponent<WeaponController> ().magazine.Count > 0) {
+						weaponController.StealWeapon (entitiesAtRange [i].GetComponent<WeaponController> ());
+					}
                 }
                 meleeReloadTime = meleeReloadDuration;
                 characterAnimation.Attack();
