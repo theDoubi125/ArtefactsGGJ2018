@@ -40,6 +40,8 @@ public class PlayerController : MonoBehaviour
 	public Sprite characterSprite;
 	public Color playerColor;
 
+    private MeleeColliderRotator colliderRotator;
+
 	void Awake ()
     {
         if (!GameController.instance.IsPlayerControlled(playerIndex))
@@ -54,6 +56,7 @@ public class PlayerController : MonoBehaviour
         if(cursorController != null)
             cursorTransform = cursorController.transform;
         characterMesh = transform.GetComponentInChildren<CharacterMeshComponent>();
+        colliderRotator = GetComponentInChildren<MeleeColliderRotator>();
 	}
 
 	void Start ()
@@ -101,6 +104,8 @@ public class PlayerController : MonoBehaviour
             currentRotation = Quaternion.RotateTowards(currentRotation, targetRotation, rotSpeed * Time.deltaTime); 
             if (characterMesh != null)
                 characterMesh.SetRotation(currentRotation.eulerAngles.y);
+            if (colliderRotator != null)
+                colliderRotator.SetRotation(currentRotation.eulerAngles.y);
 
             animationController.SetSpeedRatio(body.velocity.magnitude / maxSpeed);
         }
