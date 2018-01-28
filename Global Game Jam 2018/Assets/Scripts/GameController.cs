@@ -11,7 +11,10 @@ public class GameController : MonoBehaviour
 	// Use this for initialization
 	void Awake ()
 	{
-        instance = this;
+        if (instance == null)
+            instance = this;
+        else
+            gameObject.SetActive(false);
 	}
 
 	void Start ()
