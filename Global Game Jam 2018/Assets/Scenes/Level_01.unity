@@ -972,9 +972,27 @@ Prefab:
       propertyPath: personnalHUD
       value: 
       objectReference: {fileID: 367908860}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114502608225969074, guid: e6a1eae10f5f7974b9977eda8a626fc6, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: e6a1eae10f5f7974b9977eda8a626fc6, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1119462585 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1293505654133326, guid: e6a1eae10f5f7974b9977eda8a626fc6,
+    type: 2}
+  m_PrefabInternal: {fileID: 1119462584}
+--- !u!114 &1119462586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1119462585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e07c5c978f9073147bd7067d5b52fd82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  angle: 0
 --- !u!1 &1175235711
 GameObject:
   m_ObjectHideFlags: 0
