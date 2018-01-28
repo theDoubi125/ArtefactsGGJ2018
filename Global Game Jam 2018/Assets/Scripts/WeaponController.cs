@@ -66,8 +66,8 @@ public class WeaponController : MonoBehaviour
 	public void StealWeapon(WeaponController victim)
 	{
 		if (victim.magazine.Count > 0) {
-			Transform projectile = Instantiate (bullet);
-			projectile.position = victim.transform.position + player.GetWeaponDirection () * 8f;
+			Transform projectile = Instantiate (victim.bullet);
+			projectile.position = victim.transform.position + Vector3.up;
 			projectile.rotation = Quaternion.LookRotation (player.GetWeaponDirection ()); 	
 			projectile.gameObject.AddComponent <Ammunition> ();
 			Ammunition tmp = projectile.gameObject.GetComponent<Ammunition> ();
@@ -82,8 +82,6 @@ public class WeaponController : MonoBehaviour
 			Destroy (victim.magazine [0]);
 			victim.magazine.RemoveAt (0);
 			victim.DeleteHUDAmmo ();
-			tmp.isBillboard = true;
-			tmp.ChangeToBillboard ();
 		}
 	}
 
@@ -114,7 +112,7 @@ public class WeaponController : MonoBehaviour
 		tmp.AddComponent<Ammunition>();
 		tmp.GetComponent<Ammunition>().behaviorchoice = ammo.behaviorchoice;
 		tmp.GetComponent<Ammunition>().bonuschoice = ammo.bonuschoice;
-		Debug.Log (ammo.bonusSpriteNegative + " | " + ammo.bonusSpritePositive + " | " + ammo.behaviorSprite);
+//		Debug.Log (ammo.bonusSpriteNegative + " | " + ammo.bonusSpritePositive + " | " + ammo.behaviorSprite);
 		tmp.GetComponent<Ammunition> ().bonusSpriteNegative = ammo.bonusSpriteNegative;
 		tmp.GetComponent<Ammunition> ().bonusSpritePositive= ammo.bonusSpritePositive;
 		tmp.GetComponent<Ammunition> ().behaviorSprite= ammo.behaviorSprite;
