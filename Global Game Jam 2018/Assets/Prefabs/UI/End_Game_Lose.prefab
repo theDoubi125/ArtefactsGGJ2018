@@ -157,6 +157,7 @@ GameObject:
   - component: {fileID: 224192160573104040}
   - component: {fileID: 111908914166955406}
   - component: {fileID: 95264013663781684}
+  - component: {fileID: 114370996477595754}
   m_Layer: 5
   m_Name: End_Game_Lose
   m_TagString: Untagged
@@ -256,6 +257,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114370996477595754
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1945410807867046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 272686fd506016047995a949f0dff7e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114407732654521846
 MonoBehaviour:
   m_ObjectHideFlags: 1
