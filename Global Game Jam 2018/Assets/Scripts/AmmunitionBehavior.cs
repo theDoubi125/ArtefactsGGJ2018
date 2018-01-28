@@ -8,7 +8,7 @@ public class AmmunitionBehavior : MonoBehaviour
 	public int damage;
 
 	// Use this for initialization
-	void Start()
+	protected void Start()
 	{
 		if (GetComponent<PlayerController>() == null)
 		{

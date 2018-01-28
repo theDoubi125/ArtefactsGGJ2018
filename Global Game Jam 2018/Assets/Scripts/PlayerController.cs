@@ -30,6 +30,8 @@ public class PlayerController : MonoBehaviour
     private Transform cursorTransform;
     private CharacterMeshComponent characterMesh;
 
+	public GameObject personnalHUD;
+
 	void Awake ()
     {
         if (!GameController.instance.IsPlayerControlled(playerIndex))
