@@ -305,7 +305,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1824337593429998}
-  m_LocalRotation: {x: -0, y: 0.13052596, z: -0, w: 0.99144495}
+  m_LocalRotation: {x: 0.25660488, y: 0.12607859, z: -0.03378266, w: 0.9576622}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -313,7 +313,7 @@ Transform:
   - {fileID: 4099945825955346}
   m_Father: {fileID: 4201845942439424}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 15.000001, z: 0}
+  m_LocalEulerAnglesHint: {x: 30, y: 15.000001, z: 0}
 --- !u!4 &4099945825955346
 Transform:
   m_ObjectHideFlags: 1
@@ -475,14 +475,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1461640718764238}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4979410474526936}
   m_Father: {fileID: 4586066932514784}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90.00001, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4858911651424380
 Transform:
   m_ObjectHideFlags: 1
@@ -652,7 +652,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 9d5c03b3f6890d4498b323d2c06fa5ce, type: 3}
+  - {fileID: 2100000, guid: 610fc209699dbe74c82796195ff6cad4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -886,7 +886,7 @@ Rigidbody:
   m_GameObject: {fileID: 1744204026639706}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 5
+  m_Drag: 3
   m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -1040,7 +1040,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 4768133177856040, guid: 68891ac949d7194429bb52487c83339d,
     type: 2}
   magazine: []
-  maxCapacity: 3
+  maxCapacity: 5
   player: {fileID: 0}
   hudAmmo: {fileID: 1246995441662066, guid: 749a1ae668d9d4242810e14ad860b620, type: 2}
   hudAmmoParent: {fileID: 0}
