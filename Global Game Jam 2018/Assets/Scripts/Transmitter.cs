@@ -13,6 +13,7 @@ public class Transmitter : MonoBehaviour
 	public Vector3[] gaugesInitialPositions;
 	public Vector3[] gaugesFinalPositions;
 	public float[] playerScores = {0f,0f,0f,0f};
+	private int animCounter = 0;
 
 	// Use this for initialization
 	void Start ()
@@ -25,13 +26,19 @@ public class Transmitter : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
+		animCounter = 0;
 		for (int i = 0; i < 4; i++) {
 			if (arePlayersChanneling [i]) {
+				animCounter++;
 				playerScores [i] += Time.deltaTime * transmissionSpeed * bonusFactor[i];
 				gauges[i].position = Vector3.Lerp (gaugesInitialPositions[i], gaugesFinalPositions[i], playerScores[i]/maxValue);
 				//TODO : if playerScore[i] >= maxValue then win
 			}
 		}
+		if (animCounter > 0 && !GetComponent<Animation> ().isPlaying)
+			GetComponent<Animation> ().Play ();
+		if (animCounter == 0)
+			GetComponent<Animation> ().Stop ();
 	}
 
 	void OnTriggerEnter(Collider col)
