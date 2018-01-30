@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class CharacterMeshComponent : MonoBehaviour {
 
+    public Transform MeshPrefab;
     Vector3 initialRotation;
     public float angle;
+
 	void Awake ()
     {
-        initialRotation = transform.localEulerAngles;;
-	}
+        initialRotation = transform.localEulerAngles;
+        Instantiate<Transform>(MeshPrefab, transform);
+    }
 	
     public void SetRotation(float angle)
     {
