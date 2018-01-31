@@ -32,14 +32,15 @@ public class WeaponController : MonoBehaviour
         if (Input.GetAxis(player.GetPlayerInputPrefix() + "Action1") < -InputThreshold && !isInputPressed)
 		{
             isInputPressed = true;
-			if (magazine.Count > 0)
+            GetComponentInChildren<Inventory>().UseCurrentBonus(transform.position, player.GetWeaponDirection());
+			/*if (magazine.Count > 0)
 			{
 				CreateProjectile();
 			}
 			else
 			{
 				//TODO : Play SFX
-			}
+			}*/
 		}
 		if (magazine.Count > 0)
 		{

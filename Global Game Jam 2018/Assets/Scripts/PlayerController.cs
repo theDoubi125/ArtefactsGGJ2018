@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     private Quaternion currentRotation = Quaternion.identity;
     private Quaternion targetRotation;
 
-    private Vector3 currentTargetDirection;
+    private Vector3 currentTargetDirection = Vector3.right;
     private Vector3 currentMovementDirection;
 
     public Quaternion initialRotation;
