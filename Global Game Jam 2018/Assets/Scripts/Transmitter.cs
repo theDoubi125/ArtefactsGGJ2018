@@ -16,7 +16,6 @@ public class Transmitter : MonoBehaviour
 	public float[] playerScores = {0f,0f,0f,0f};
 	public GameObject winGUI;
 	private bool won = false;
-	private PlayerController[] players;
 	private int animCounter = 0;
 
 	// Use this for initialization
@@ -25,7 +24,6 @@ public class Transmitter : MonoBehaviour
 		for (int i = 0; i < 4; i++) {
 			gaugesInitialPositions [i] = gauges [i].position;
 		}
-		players = FindObjectsOfType<PlayerController> ();
 	}
 	
 	// Update is called once per frame

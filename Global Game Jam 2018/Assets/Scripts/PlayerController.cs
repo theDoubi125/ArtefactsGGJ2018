@@ -99,8 +99,7 @@ public class PlayerController : MonoBehaviour
                     angle *= -1;
                 targetRotation = Quaternion.AngleAxis(angle, Vector3.up);
             }
-
-            float deltaAngle = Quaternion.Angle(currentRotation, targetRotation);
+            
             currentRotation = Quaternion.RotateTowards(currentRotation, targetRotation, rotSpeed * Time.deltaTime); 
             if (characterMesh != null)
                 characterMesh.SetRotation(currentRotation.eulerAngles.y);
