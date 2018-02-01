@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestBonus : Bonus
+public class TestWeapon : Weapon
 {
     public float bumpFrequency = 1;
     public float bumpStrength = 5;
