@@ -19,7 +19,7 @@ public class Crate : MonoBehaviour
         if (player != null)
         {
             inventory.TransferContentTo(player.GetComponentInChildren<Inventory>());
-            Destroy(gameObject);
+            Destroy(transform.parent.gameObject);
         }
     }
 }
