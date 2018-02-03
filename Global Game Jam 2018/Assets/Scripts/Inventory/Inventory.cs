@@ -5,13 +5,23 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     public float projectileSpawnDistance = 1;
+    public bool mustEnableFirstItem = false;
 
     public void AddWeapon(Weapon weapon)
     {
         weapon.transform.SetParent(transform, false);
-        weapon.OnBoundTo(transform);
         for (int i = 0; i < transform.childCount; i++)
-            transform.GetChild(i).gameObject.SetActive(i == 0);
+        {
+            transform.GetChild(i).gameObject.SetActive(mustEnableFirstItem && i == 0);
+        }
+    }
+
+    public void UpdateWeapons()
+    {
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            transform.GetChild(i).gameObject.SetActive(mustEnableFirstItem && i == 0);
+        }
     }
 
     public void TransferContentTo(Inventory target)
@@ -20,17 +30,16 @@ public class Inventory : MonoBehaviour
         {
             Transform child = transform.GetChild(0);
 			Weapon bonus = child.GetComponent<Weapon>();
-            bonus.OnBoundTo(target.transform);
-            if (target.transform.childCount > 0)
-                child.gameObject.SetActive(false);
+            bool mustActivate = target.mustEnableFirstItem && target.transform.childCount == 0;
             child.SetParent(target.transform);
+            child.gameObject.SetActive(mustActivate);
         }
     }
 
     void Start()
     {
         for (int i = 0; i < transform.childCount; i++)
-            transform.GetChild(i).gameObject.SetActive(i == 0);
+            transform.GetChild(i).gameObject.SetActive(mustEnableFirstItem && i == 0);
     }
 
 	public void ThrowCurrentWeapon(Vector3 position, Vector3 direction)
@@ -43,7 +52,7 @@ public class Inventory : MonoBehaviour
             projectileTransform.rotation = Quaternion.LookRotation(direction);
 			projectileTransform.GetComponentInChildren<Inventory>().AddWeapon(bonus);
         }
-        if (transform.childCount > 0)
+        if (transform.childCount > 0 && mustEnableFirstItem)
         {
             transform.GetChild(0).gameObject.SetActive(true);
         }
@@ -54,9 +63,7 @@ public class Inventory : MonoBehaviour
 		if(transform.childCount > 0)
 		{
 			Weapon bonus = transform.GetChild(0).GetComponent<Weapon>();
-			Transform projectileTransform = Instantiate<Transform>(bonus.attackProjectilePrefab);
-			projectileTransform.position = position + direction.normalized * projectileSpawnDistance;
-			projectileTransform.rotation = Quaternion.LookRotation(direction);
+			
 		}
 	}
 }

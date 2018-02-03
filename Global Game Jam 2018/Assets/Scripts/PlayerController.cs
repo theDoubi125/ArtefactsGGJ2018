@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum InputType
+{
+    Attack,
+    Throw
+}
+
 public class PlayerController : MonoBehaviour
 {
     public float acceleration = 10;
@@ -42,7 +48,15 @@ public class PlayerController : MonoBehaviour
 
     private MeleeColliderRotator colliderRotator;
 
-	void Awake ()
+    public delegate void InputDelegate(InputType type);
+    public InputDelegate OnInputPressed;
+    public InputDelegate OnInputReleased;
+
+   private bool isThrowPressed = false;
+    private bool isAttackPressed = false;
+    public float InputThreshold = 0.5f;
+
+    void Awake ()
     {
         if (!GameController.instance.IsPlayerControlled(playerIndex))
             gameObject.SetActive(false);
@@ -108,7 +122,35 @@ public class PlayerController : MonoBehaviour
 
             animationController.SetSpeedRatio(body.velocity.magnitude / maxSpeed);
         }
-	}
+        
+        if (Input.GetAxis(GetPlayerInputPrefix() + "Action1") > -InputThreshold && isThrowPressed)
+        {
+            isThrowPressed = false;
+            if (OnInputReleased != null)
+                OnInputReleased(InputType.Throw);
+        }
+        if (Input.GetAxis(GetPlayerInputPrefix() + "Action1") < -InputThreshold && !isThrowPressed)
+        {
+            isThrowPressed = true;
+            if (OnInputPressed != null)
+                OnInputPressed(InputType.Throw);
+        }
+        else
+        {
+            if (Input.GetAxis(GetPlayerInputPrefix() + "Action2") < InputThreshold && isAttackPressed)
+            {
+                isAttackPressed = false;
+                if (OnInputReleased != null)
+                    OnInputReleased(InputType.Attack);
+            }
+            if (Input.GetAxis(GetPlayerInputPrefix() + "Action2") > InputThreshold && !isAttackPressed)
+            {
+                isAttackPressed = true;
+                if (OnInputPressed != null)
+                    OnInputPressed(InputType.Attack);
+            }
+        }
+    }
 
     public Vector3 GetWeaponDirection()
     {

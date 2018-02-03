@@ -11,9 +11,7 @@ public class WeaponController : MonoBehaviour
 	public PlayerController player;
 	public GameObject hudAmmo;
 	public Transform hudAmmoParent;
-    public float InputThreshold = 0.5f;
-    private bool isInputPressed = false;
-	public Color Freddygreen;
+    public Color Freddygreen;
 	public Color Freddyred;
 
 	// Use this for initialization
@@ -27,22 +25,7 @@ public class WeaponController : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-        if (Input.GetAxis(player.GetPlayerInputPrefix() + "Action1") > -InputThreshold && isInputPressed)
-            isInputPressed = false;
-        if (Input.GetAxis(player.GetPlayerInputPrefix() + "Action1") < -InputThreshold && !isInputPressed)
-		{
-            isInputPressed = true;
-            GetComponentInChildren<Inventory>().UseCurrentBonus(transform.position, player.GetWeaponDirection());
-			/*if (magazine.Count > 0)
-			{
-				CreateProjectile();
-			}
-			else
-			{
-				//TODO : Play SFX
-			}*/
-		}
-		if (magazine.Count > 0)
+        if (magazine.Count > 0)
 		{
 			magazine[0].GetComponent<AmmunitionBonus>().ApplyBonus(player);
 		}
