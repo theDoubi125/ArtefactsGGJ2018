@@ -57,6 +57,7 @@ GameObject:
   - component: {fileID: 4342732148177340}
   - component: {fileID: 135134790432527258}
   - component: {fileID: 114981402181085620}
+  - component: {fileID: 114155202324950574}
   m_Layer: 11
   m_Name: Hitbox
   m_TagString: Untagged
@@ -161,6 +162,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &114155202324950574
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1887716208421670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 842498cd73327574099203da2923f95e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cratePrefab: {fileID: 4100456464408030, guid: 031fd0b4acfb9f649af662d573b0faa6,
+    type: 2}
+  maxBounce: 3
 --- !u!114 &114158575894092456
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -173,6 +188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileSpawnDistance: 2
+  mustEnableFirstItem: 0
 --- !u!114 &114876229840453844
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -196,9 +212,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialSpeed: {x: 20, y: 21.96}
-  cratePrefab: {fileID: 4100456464408030, guid: 031fd0b4acfb9f649af662d573b0faa6,
-    type: 2}
-  maxBounce: 3
 --- !u!135 &135096731825185214
 SphereCollider:
   m_ObjectHideFlags: 1

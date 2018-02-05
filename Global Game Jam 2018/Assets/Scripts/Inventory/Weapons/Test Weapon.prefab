@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4809511258349180}
   - component: {fileID: 114208236837138428}
   - component: {fileID: 114983233616399774}
+  - component: {fileID: 114906947486470948}
   m_Layer: 0
   m_Name: Test Weapon
   m_TagString: Untagged
@@ -52,6 +53,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff7c6ffa2fed2484a82d6a31f17876d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114906947486470948
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1195924564689840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 668463f97de38924fb37f3ea193520dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAmmo: 10
 --- !u!114 &114983233616399774
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -69,4 +82,4 @@ MonoBehaviour:
     type: 2}
   clipAmmo: 5
   InputThreshold: 0.5
-  throwDistance: 20
+  throwDistance: 2

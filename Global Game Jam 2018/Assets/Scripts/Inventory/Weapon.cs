@@ -11,6 +11,7 @@ public class Weapon : MonoBehaviour
 
     PlayerController player;
     Inventory inventory;
+    Magazine magazine;
 
     private bool isThrowPressed = false;
     private bool isAttackPressed = false;
@@ -38,6 +39,7 @@ public class Weapon : MonoBehaviour
         inventory = GetComponentInParent<Inventory>();
         player.OnInputPressed += OnInputPressed;
         player.OnInputReleased += OnInputReleased;
+        magazine = GetComponent<Magazine>();
     }
 
     void OnDisable()
@@ -87,8 +89,12 @@ public class Weapon : MonoBehaviour
 
     public void Attack()
     {
-        Transform projectileTransform = Instantiate<Transform>(attackProjectilePrefab);
-        projectileTransform.position = transform.position + player.GetWeaponDirection().normalized * throwDistance;
-        projectileTransform.rotation = Quaternion.LookRotation(player.GetWeaponDirection());
+        if(magazine.HasAmmo())
+        {
+            Transform projectileTransform = Instantiate<Transform>(attackProjectilePrefab);
+            projectileTransform.position = transform.position + player.GetWeaponDirection().normalized * throwDistance;
+            projectileTransform.rotation = Quaternion.LookRotation(player.GetWeaponDirection());
+            magazine.UseAmmo();
+        }
     }
 }

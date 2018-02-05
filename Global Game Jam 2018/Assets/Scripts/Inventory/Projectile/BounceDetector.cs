@@ -9,7 +9,7 @@ public class BounceDetector : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.collider.CompareTag("Ground"))
+        if(collision.collider.CompareTag("Ground") && onBounce != null)
             onBounce();
     }
 }

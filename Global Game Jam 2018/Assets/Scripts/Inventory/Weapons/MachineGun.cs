@@ -6,7 +6,14 @@ public class MachineGun : MonoBehaviour
 {
     public float fireRate = 0.3f;
     private float fireTime = 0;
+    public float precision = 10;
     private Weapon weapon;
+    private Magazine magazine;
+    private PlayerController player;
+
+    public Vector3 angles;
+
+    public Transform projectilePrefab;
 
     bool isAttackPressed = false;
 
@@ -18,17 +25,19 @@ public class MachineGun : MonoBehaviour
             while(fireTime > fireRate)
             {
                 fireTime -= fireRate;
-                weapon.Attack();
+                Shoot();
             }
         }
     }
 
     void OnEnable()
     {
+        player = GetComponentInParent<PlayerController>();
         weapon = GetComponent<Weapon>();
         weapon.AttackPressed += AttackPressed;
         weapon.AttackReleased += AttackReleased;
         weapon.ThrowPressed += ThrowPressed;
+        magazine = GetComponent<Magazine>();
     }
 
     void OnDisable()
@@ -40,7 +49,7 @@ public class MachineGun : MonoBehaviour
     private void AttackPressed()
     {
         isAttackPressed = true;
-        weapon.Attack();
+        Shoot();
         fireTime = 0;
     }
 
@@ -52,5 +61,19 @@ public class MachineGun : MonoBehaviour
     private void ThrowPressed()
     {
         weapon.Throw();
+    }
+
+    private void Shoot()
+    {
+        if (magazine.HasAmmo())
+        {
+            Transform projectileTransform = Instantiate<Transform>(projectilePrefab);
+            Vector3 angles = new Vector3(Random.Range(0, 360), 0, Random.Range(0, precision));
+            Vector3 shootDirection = Quaternion.Euler(angles) * player.GetWeaponDirection().normalized;
+            Debug.Log(shootDirection + " " + angles);
+            projectileTransform.position = transform.position + shootDirection * weapon.throwDistance;
+            projectileTransform.rotation = Quaternion.LookRotation(shootDirection);
+            magazine.UseAmmo();
+        }
     }
 }
