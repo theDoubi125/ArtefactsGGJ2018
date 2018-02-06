@@ -68,7 +68,7 @@ public class MachineGun : MonoBehaviour
         if (magazine.HasAmmo())
         {
             Transform projectileTransform = Instantiate<Transform>(projectilePrefab);
-            Vector3 angles = new Vector3(Random.Range(0, 360), 0, Random.Range(0, precision));
+            Vector3 angles = new Vector3(0, Random.Range(-precision/2, precision/2), 0);
             Vector3 shootDirection = Quaternion.Euler(angles) * player.GetWeaponDirection().normalized;
             Debug.Log(shootDirection + " " + angles);
             projectileTransform.position = transform.position + shootDirection * weapon.throwDistance;
