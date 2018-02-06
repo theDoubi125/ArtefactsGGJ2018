@@ -6,6 +6,7 @@ public class CharacterAnimation : MonoBehaviour {
 
     private Animator animator;
     private PlayerController player;
+	public bool debug = false;
 
 	void Start ()
     {
@@ -32,9 +33,14 @@ public class CharacterAnimation : MonoBehaviour {
     {
         animator.SetTrigger("cac");
     }
-	
+
 	void Update ()
     {
-        animator.SetFloat("target angle", Vector3.SignedAngle(player.GetWeaponDirection(), player.GetMovementDirection(), Vector3.up) / 180);
+		if(debug)
+			Debug.Log (animator.transform.right);
+		float angle = Vector3.SignedAngle (player.GetWeaponDirection (), animator.transform.right, Vector3.up) / 360;
+		if (angle < 0)
+			angle += 1;
+		animator.SetFloat ("target angle", 1-angle);
 	}
 }
