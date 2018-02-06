@@ -5,10 +5,12 @@ using UnityEngine;
 public class CharacterAnimation : MonoBehaviour {
 
     private Animator animator;
+    private PlayerController player;
 
 	void Start ()
     {
         animator = GetComponentInChildren<Animator>();
+        player = GetComponentInParent<PlayerController>();
 	}
 
     public void Jump()
@@ -33,6 +35,6 @@ public class CharacterAnimation : MonoBehaviour {
 	
 	void Update ()
     {
-		
+        animator.SetFloat("target angle", Vector3.SignedAngle(player.GetWeaponDirection(), player.GetMovementDirection(), Vector3.up) / 180);
 	}
 }
