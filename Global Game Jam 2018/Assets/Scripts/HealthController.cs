@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class HealthController : MonoBehaviour
 {
+	public Transform spawner;
 	public int currentHP;
 	public int maxHP;
 	public int minHP;
@@ -31,6 +32,16 @@ public class HealthController : MonoBehaviour
 		}
 	}
 
+	public void Damage(int damage)
+	{
+		currentHP -= damage;
+		slider.value = currentHP;
+		if (currentHP <= 0)
+		{
+			Death ();
+		}
+	}
+
 	public void MeleeHit(int meleeDamage)
 	{
 		currentHP -= meleeDamage;
@@ -43,11 +54,7 @@ public class HealthController : MonoBehaviour
 
 	public void Death ()
 	{
-		GetComponent<PlayerController> ().enabled = false;
-		GetComponent<WeaponController> ().enabled = false;
-		GetComponent<ActionController> ().enabled = false;
-		GetComponent<HealthController> ().enabled = false;
-		GetComponent<Collider> ().enabled = false;
-		DestroyObject (GetComponent<Rigidbody> ());
+		currentHP = maxHP;
+		transform.position = spawner.transform.position;
 	}
 }
