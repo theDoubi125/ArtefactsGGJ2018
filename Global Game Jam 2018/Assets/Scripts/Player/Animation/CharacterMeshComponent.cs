@@ -16,6 +16,6 @@ public class CharacterMeshComponent : MonoBehaviour {
 	
     public void SetRotation(float angle)
     {
-        transform.localEulerAngles = initialRotation + new Vector3(0, 0, angle);
+		transform.localEulerAngles = initialRotation + new Vector3(0, angle, 0);
     }
 }
