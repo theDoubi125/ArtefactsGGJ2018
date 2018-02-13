@@ -53,7 +53,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3208387a7f0449644b0ac3fd75b66620, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 1.5
+  fireRate: 1.15
   precision: 20
   bulletCount: 5
   angles: {x: 0, y: 0, z: 0}
@@ -70,7 +70,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 668463f97de38924fb37f3ea193520dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAmmo: 5000
+  maxAmmo: 25
 --- !u!114 &114202606981328056
 MonoBehaviour:
   m_ObjectHideFlags: 1

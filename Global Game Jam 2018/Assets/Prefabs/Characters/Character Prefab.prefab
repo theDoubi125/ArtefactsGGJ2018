@@ -328,7 +328,7 @@ Rigidbody:
   m_GameObject: {fileID: 1037476285262632}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 3
+  m_Drag: 5
   m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -409,8 +409,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d2fed6044db80d478dab9d4be5962b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceleration: 70
-  defaultAcceleration: 70
+  acceleration: 80
+  defaultAcceleration: 80
   playerIndex: 0
   directionMinLength: 0.5
   maxSpeed: 5
