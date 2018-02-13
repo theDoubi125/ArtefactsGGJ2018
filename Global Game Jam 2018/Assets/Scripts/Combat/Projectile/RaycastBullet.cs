@@ -23,9 +23,9 @@ public class RaycastBullet : MonoBehaviour
 				if (raycastHit.rigidbody.GetComponent<HealthController> () != null)
 					raycastHit.rigidbody.GetComponent<HealthController> ().Damage (damage);
 			}
-			
+			if(impactPrefab != null)
+				Instantiate<Transform> (impactPrefab, raycastHit.point, Quaternion.LookRotation (raycastHit.normal));
         }
-
         Destroy(gameObject);
 	}
 }

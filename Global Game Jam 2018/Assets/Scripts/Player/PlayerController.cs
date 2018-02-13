@@ -108,17 +108,17 @@ public class PlayerController : MonoBehaviour
             Vector3 direction = body.velocity.normalized;
             if (body.velocity.sqrMagnitude > minSpeedForRot * minSpeedForRot)
             {
-                float angle = Vector3.Angle(Vector2.right, direction);
+				float angle = Vector3.Angle(Vector2.right, GetWeaponDirection());
                 if (direction.z > 0)
                     angle *= -1;
                 targetRotation = Quaternion.AngleAxis(angle, Vector3.up);
             }
             
-            currentRotation = Quaternion.RotateTowards(currentRotation, targetRotation, rotSpeed * Time.deltaTime); 
+            //urrentRotation = Quaternion.RotateTowards(currentRotation, targetRotation, rotSpeed * Time.deltaTime); 
             if (characterMesh != null)
-                characterMesh.SetRotation(currentRotation.eulerAngles.y);
+				characterMesh.transform.rotation = Quaternion.LookRotation(weaponDirection);
             if (colliderRotator != null)
-                colliderRotator.SetRotation(currentRotation.eulerAngles.y);
+				colliderRotator.transform.rotation = Quaternion.LookRotation(weaponDirection);
 
             animationController.SetSpeedRatio(body.velocity.magnitude / maxSpeed);
         }

@@ -88,4 +88,4 @@ MonoBehaviour:
     type: 2}
   clipAmmo: 5
   InputThreshold: 0.5
-  throwDistance: 2
+  throwDistance: 10
