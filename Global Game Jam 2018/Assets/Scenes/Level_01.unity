@@ -1163,6 +1163,30 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 70, y: 20, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &547572915 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1676977698043662, guid: 8ceac95aba540774985d438949402b4a,
+    type: 2}
+  m_PrefabInternal: {fileID: 997037437}
+--- !u!114 &547572920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 547572915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3208387a7f0449644b0ac3fd75b66620, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionToBind: 1
+  throwOnShoot: 1
+  fireRate: 1.5
+  precision: 20
+  bulletCount: 1
+  throwDistance: 2
+  projectilePrefab: {fileID: 4907201012940210, guid: 225a70ba668fa4c419d01ec6decdd9bc,
+    type: 2}
 --- !u!1 &598898457
 GameObject:
   m_ObjectHideFlags: 0
@@ -2567,6 +2591,30 @@ Transform:
   m_PrefabParentObject: {fileID: 4676732062314260, guid: 43816609decda3244a9556a11a8ce716,
     type: 2}
   m_PrefabInternal: {fileID: 653500492}
+--- !u!1 &1590525168 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1598413630731958, guid: 8ceac95aba540774985d438949402b4a,
+    type: 2}
+  m_PrefabInternal: {fileID: 997037437}
+--- !u!114 &1590525173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1590525168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3208387a7f0449644b0ac3fd75b66620, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionToBind: 1
+  throwOnShoot: 1
+  fireRate: 1
+  precision: 0
+  bulletCount: 1
+  throwDistance: 2
+  projectilePrefab: {fileID: 4907201012940210, guid: 225a70ba668fa4c419d01ec6decdd9bc,
+    type: 2}
 --- !u!1001 &1606209518
 Prefab:
   m_ObjectHideFlags: 0
