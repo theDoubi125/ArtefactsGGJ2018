@@ -6,6 +6,7 @@ public class MachineGun : MonoBehaviour
 {
     public WeaponAction actionToBind;
     public bool throwOnShoot = false;
+	public int projectilePerShoot = 1;
     public float fireRate = 0.3f;
     private float fireTime = 0;
     public float precision = 10;
@@ -63,17 +64,19 @@ public class MachineGun : MonoBehaviour
     {
         if (magazine.HasAmmo())
         {
-            Transform projectileTransform = Instantiate<Transform>(projectilePrefab);
-			Vector3 angles = new Vector3(0, Gaussian() * precision/2f, 0);
-            Vector3 shootDirection = Quaternion.Euler(angles) * player.GetWeaponDirection().normalized;
-            projectileTransform.position = transform.position + shootDirection * throwDistance;
-            projectileTransform.rotation = Quaternion.LookRotation(shootDirection);
-            Inventory projectileInventory = projectileTransform.GetComponentInChildren<Inventory>();
-            if (throwOnShoot && projectileInventory != null)
-            {
-                projectileInventory.AddWeapon(weapon);
-                inventory.UpdateWeapons();
-            }
+			for (int i = 0; i < projectilePerShoot; i++)
+			{
+				Transform projectileTransform = Instantiate<Transform> (projectilePrefab);
+				Vector3 angles = new Vector3 (0, Gaussian () * precision / 2f, 0);
+				Vector3 shootDirection = Quaternion.Euler (angles) * player.GetWeaponDirection ().normalized;
+				projectileTransform.position = transform.position + shootDirection * throwDistance;
+				projectileTransform.rotation = Quaternion.LookRotation (shootDirection);
+				Inventory projectileInventory = projectileTransform.GetComponentInChildren<Inventory> ();
+				if (i == 0 && throwOnShoot && projectileInventory != null) {
+					projectileInventory.AddWeapon (weapon);
+					inventory.UpdateWeapons ();
+				}
+			}
             magazine.UseAmmo();
         }
 	}

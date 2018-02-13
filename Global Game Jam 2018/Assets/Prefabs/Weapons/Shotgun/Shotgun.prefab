@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 114202606981328056}
   - component: {fileID: 114109881561005934}
   - component: {fileID: 114064082399330812}
+  - component: {fileID: 114569024574712496}
   m_Layer: 0
   m_Name: Shotgun
   m_TagString: Untagged
@@ -53,10 +54,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3208387a7f0449644b0ac3fd75b66620, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 1.15
+  actionToBind: 0
+  throwOnShoot: 0
+  fireRate: 1.5
   precision: 20
   bulletCount: 5
-  angles: {x: 0, y: 0, z: 0}
+  throwDistance: 2
   projectilePrefab: {fileID: 4590522593347866, guid: 9b00ffc8a46f33b41b261f8bb0d43db8,
     type: 2}
 --- !u!114 &114109881561005934
@@ -70,7 +73,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 668463f97de38924fb37f3ea193520dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAmmo: 25
+  maxAmmo: 5000
 --- !u!114 &114202606981328056
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -82,10 +85,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac36da749ae2b55438c4e2658c633e79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwProjectilePrefab: {fileID: 4907201012940210, guid: 225a70ba668fa4c419d01ec6decdd9bc,
+--- !u!114 &114569024574712496
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1740583327604560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3208387a7f0449644b0ac3fd75b66620, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionToBind: 1
+  throwOnShoot: 1
+  fireRate: 1
+  precision: 0
+  bulletCount: 1
+  throwDistance: 2
+  projectilePrefab: {fileID: 4907201012940210, guid: 225a70ba668fa4c419d01ec6decdd9bc,
     type: 2}
-  attackProjectilePrefab: {fileID: 4590522593347866, guid: f63a9961a04eab14eb5f1da1a4af2b91,
-    type: 2}
-  clipAmmo: 5
-  InputThreshold: 0.5
-  throwDistance: 10
