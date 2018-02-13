@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class MachineGun : MonoBehaviour
 {
+    public WeaponAction actionToBind;
+    public bool throwOnShoot = false;
     public float fireRate = 0.3f;
     private float fireTime = 0;
     public float precision = 10;
     private Weapon weapon;
     private Magazine magazine;
     private PlayerController player;
-
-    public Vector3 angles;
+    private Inventory inventory;
+    public float throwDistance = 2;
 
     public Transform projectilePrefab;
 
@@ -33,17 +35,16 @@ public class MachineGun : MonoBehaviour
     void OnEnable()
     {
         player = GetComponentInParent<PlayerController>();
+        inventory = GetComponentInParent<Inventory>();
         weapon = GetComponent<Weapon>();
-        weapon.AttackPressed += AttackPressed;
+        weapon.BindToAction(actionToBind, AttackPressed, AttackReleased);
         weapon.AttackReleased += AttackReleased;
-        weapon.ThrowPressed += ThrowPressed;
         magazine = GetComponent<Magazine>();
     }
 
     void OnDisable()
     {
-        weapon.AttackPressed -= AttackPressed;
-        weapon.ThrowPressed -= ThrowPressed;
+        weapon.UnbindAction(actionToBind, AttackPressed, AttackReleased);
     }
 
     private void AttackPressed()
@@ -58,11 +59,6 @@ public class MachineGun : MonoBehaviour
         isAttackPressed = false;
     }
 
-    private void ThrowPressed()
-    {
-        weapon.Throw();
-    }
-
     private void Shoot()
     {
         if (magazine.HasAmmo())
@@ -70,8 +66,14 @@ public class MachineGun : MonoBehaviour
             Transform projectileTransform = Instantiate<Transform>(projectilePrefab);
 			Vector3 angles = new Vector3(0, Gaussian() * precision/2f, 0);
             Vector3 shootDirection = Quaternion.Euler(angles) * player.GetWeaponDirection().normalized;
-            projectileTransform.position = transform.position + shootDirection * weapon.throwDistance;
+            projectileTransform.position = transform.position + shootDirection * throwDistance;
             projectileTransform.rotation = Quaternion.LookRotation(shootDirection);
+            Inventory projectileInventory = projectileTransform.GetComponentInChildren<Inventory>();
+            if (throwOnShoot && projectileInventory != null)
+            {
+                projectileInventory.AddWeapon(weapon);
+                inventory.UpdateWeapons();
+            }
             magazine.UseAmmo();
         }
 	}

@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class Crate : MonoBehaviour
 {
-    Rigidbody body;
     Inventory inventory;
 
     private void Start()
     {
-        body = GetComponent<Rigidbody>();
         inventory = GetComponent<Inventory>();
     }
 

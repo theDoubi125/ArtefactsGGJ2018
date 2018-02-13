@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class Shotgun : MonoBehaviour
 {
-	public float fireRate = 1.5f;
+    public WeaponAction actionToBind;
+    public bool throwOnShoot = false;
+    public float fireRate = 1.5f;
 	private float fireTime = 1.5f;
 	public float precision = 20;
 	private Weapon weapon;
 	private Magazine magazine;
 	private PlayerController player;
+    private Inventory inventory;
 	public int bulletCount = 5;
 
-	public Vector3 angles;
+    public float throwDistance = 2;
 
 	public Transform projectilePrefab;
 
@@ -25,16 +28,14 @@ public class Shotgun : MonoBehaviour
 	{
 		player = GetComponentInParent<PlayerController>();
 		weapon = GetComponent<Weapon>();
-		weapon.AttackPressed += AttackPressed;
-		weapon.AttackReleased += AttackReleased;
-		weapon.ThrowPressed += ThrowPressed;
+        weapon.BindToAction(actionToBind, AttackPressed, AttackReleased);
 		magazine = GetComponent<Magazine>();
-	}
+        inventory = GetComponentInParent<Inventory>();
+    }
 
 	void OnDisable()
 	{
 		weapon.AttackPressed -= AttackPressed;
-		weapon.ThrowPressed -= ThrowPressed;
 	}
 
 	private void AttackPressed()
@@ -53,22 +54,25 @@ public class Shotgun : MonoBehaviour
 		
 	}
 
-	private void ThrowPressed()
-	{
-		weapon.Throw();
-	}
-
 	private void Shoot()
 	{
 		Transform projectileTransform = Instantiate<Transform>(projectilePrefab);
         float angle = Gaussian() * precision / 2f;
 		Vector3 angles = new Vector3(0, angle, 0);
 		Vector3 shootDirection = Quaternion.Euler(angles) * player.GetWeaponDirection().normalized;
-		projectileTransform.position = transform.position + shootDirection * weapon.throwDistance;
+		projectileTransform.position = transform.position + shootDirection * throwDistance;
 		projectileTransform.rotation = Quaternion.LookRotation(shootDirection);
-	}
+        Inventory projectileInventory = projectileTransform.GetComponentInChildren<Inventory>();
+        if (throwOnShoot && projectileInventory != null)
+        {
+            projectileInventory.AddWeapon(weapon);
+            inventory.UpdateWeapons();
+        }
+        magazine.UseAmmo();
 
-	public static float Gaussian()
+    }
+
+    public static float Gaussian()
 	{
 		float u, v, S;
 

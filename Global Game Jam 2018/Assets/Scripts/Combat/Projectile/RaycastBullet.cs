@@ -15,7 +15,6 @@ public class RaycastBullet : MonoBehaviour
         RaycastHit raycastHit;
         if(Physics.Raycast(transform.position, transform.forward, out raycastHit, range))
         {
-            Transform impact = Instantiate<Transform>(impactPrefab, raycastHit.point, Quaternion.LookRotation(raycastHit.normal));
             Transform trail = Instantiate<Transform>(trailPrefab, raycastHit.point, Quaternion.identity);
             trail.GetComponent<BulletTrail>().startPoint = transform.position;
 			if (raycastHit.rigidbody != null && raycastHit.rigidbody.GetComponent<PlayerController> () != null)

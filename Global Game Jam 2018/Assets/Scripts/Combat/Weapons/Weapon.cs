@@ -2,26 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum WeaponAction
+{
+    Attack,
+    Throw
+}
+
 public class Weapon : MonoBehaviour
 {
-    public Transform throwProjectilePrefab;
-	public Transform attackProjectilePrefab;
-	public int clipAmmo = 5;
-	private int ammoLeft = 0;
-
     PlayerController player;
-    Inventory inventory;
-    Magazine magazine;
-
-    private bool isThrowPressed = false;
-    private bool isAttackPressed = false;
-    public float InputThreshold = 0.5f;
-
-    public float throwDistance = 20;
+    
 
     void Start()
     {
-        ammoLeft = clipAmmo;
+
 	}
 
     public delegate void WeaponEvent();
@@ -32,14 +26,11 @@ public class Weapon : MonoBehaviour
 
     void OnEnable()
     {
-		ammoLeft = clipAmmo;
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.identity;
         player = GetComponentInParent<PlayerController>();
-        inventory = GetComponentInParent<Inventory>();
         player.OnInputPressed += OnInputPressed;
         player.OnInputReleased += OnInputReleased;
-        magazine = GetComponent<Magazine>();
     }
 
     void OnDisable()
@@ -78,23 +69,33 @@ public class Weapon : MonoBehaviour
         }
     }
 
-    public void Throw()
+    public void BindToAction(WeaponAction action, WeaponEvent pressedAction, WeaponEvent releasedAction)
     {
-        Transform projectileTransform = Instantiate<Transform>(throwProjectilePrefab);
-        projectileTransform.position = transform.position + player.GetWeaponDirection().normalized * throwDistance;
-        projectileTransform.rotation = Quaternion.LookRotation(player.GetWeaponDirection());
-        projectileTransform.GetComponentInChildren<Inventory>().AddWeapon(this);
-        inventory.UpdateWeapons();
+        switch(action)
+        {
+            case WeaponAction.Attack:
+                AttackPressed += pressedAction;
+                AttackReleased += releasedAction;
+                break;
+            case WeaponAction.Throw:
+                ThrowPressed += pressedAction;
+                ThrowReleased += releasedAction;
+                break;
+        }
     }
 
-    public void Attack()
+    public void UnbindAction(WeaponAction action, WeaponEvent pressedAction, WeaponEvent releasedAction)
     {
-        if(magazine.HasAmmo())
+        switch (action)
         {
-            Transform projectileTransform = Instantiate<Transform>(attackProjectilePrefab);
-            projectileTransform.position = transform.position + player.GetWeaponDirection().normalized * throwDistance;
-            projectileTransform.rotation = Quaternion.LookRotation(player.GetWeaponDirection());
-            magazine.UseAmmo();
+            case WeaponAction.Attack:
+                AttackPressed -= pressedAction;
+                AttackReleased -= releasedAction;
+                break;
+            case WeaponAction.Throw:
+                ThrowPressed -= pressedAction;
+                ThrowReleased -= releasedAction;
+                break;
         }
     }
 }
