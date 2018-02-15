@@ -61,7 +61,8 @@ MonoBehaviour:
   precision: 10
   throwDistance: 2
   projectilePerShot: 1
-  maxCharge: 2
+  chargeDuration: 3
+  throwAngle: 10
 --- !u!114 &114828832905827016
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -16,9 +16,11 @@ public class ChargeWeapon : MonoBehaviour
 	public float throwDistance = 2;
 	public float projectilePerShot = 1;
 
-	public float maxCharge = 2;
+	public float chargeDuration = 3;
 	private bool isCharging = false;
 	private float charge = 0;
+
+	public float throwAngle = 10;
 
 
 	void OnEnable()
@@ -59,7 +61,13 @@ public class ChargeWeapon : MonoBehaviour
 	void Update()
 	{
 		if (isCharging)
-			charge += Time.deltaTime;
+		{
+			charge += Time.deltaTime / chargeDuration;
+			if (charge > 1)
+			{
+				charge = 1;
+			}
+		}
 	}
 
 	private List<Transform> Shoot()
@@ -71,12 +79,13 @@ public class ChargeWeapon : MonoBehaviour
 			{
 				Transform projectileTransform = Instantiate<Transform> (projectilePrefab);
 				result.Add (projectileTransform);
-				Vector3 angles = new Vector3 (0, Gaussian () * precision / 2f, 0);
+				Vector3 angles = new Vector3 (0, Gaussian () * precision / 2f, throwAngle);
 				Vector3 shootDirection = Quaternion.Euler (angles) * player.GetWeaponDirection ().normalized;
 				projectileTransform.position = transform.position + shootDirection * throwDistance;
 				projectileTransform.rotation = Quaternion.LookRotation (shootDirection);
 				Inventory projectileInventory = projectileTransform.GetComponentInChildren<Inventory> ();
-				if (i == 0 && throwOnShoot && projectileInventory != null) {
+				if (i == 0 && throwOnShoot && projectileInventory != null) 
+				{
 					projectileInventory.AddWeapon (weapon);
 					inventory.UpdateWeapons ();
 				}
