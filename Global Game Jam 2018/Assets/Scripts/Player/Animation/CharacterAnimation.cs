@@ -36,7 +36,9 @@ public class CharacterAnimation : MonoBehaviour {
 
 	void Update ()
     {
-		float angle = Vector3.SignedAngle (player.GetWeaponDirection (), animator.transform.right, Vector3.up) / 360;
+		Vector3 weaponDirection = player.GetWeaponDirection ();
+		Vector3 modelDirection = animator.transform.right;
+		float angle = Vector3.SignedAngle (weaponDirection, player.GetMovementDirection(), Vector3.up) / 360;
 		if (angle < 0)
 			angle += 1;
 		animator.SetFloat ("target angle", 1-angle);
