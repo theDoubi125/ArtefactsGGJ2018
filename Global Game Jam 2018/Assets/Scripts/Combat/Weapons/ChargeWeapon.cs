@@ -52,7 +52,8 @@ public class ChargeWeapon : MonoBehaviour
 			foreach(Transform projectile in projectiles)
 			{
 				ChargeProjectile chargeProjectile = projectile.GetComponent<ChargeProjectile> ();
-				chargeProjectile.charge = charge;
+                if(chargeProjectile != null)
+    				chargeProjectile.charge = charge;
 			}
 			isCharging = false;
 		}

@@ -24,7 +24,8 @@ public class HealthController : MonoBehaviour
 	public void Damage(int damage)
 	{
 		currentHP -= damage;
-		slider.value = currentHP;
+        if(slider != null)
+		    slider.value = currentHP;
 		if (currentHP <= 0)
 		{
 			Death ();
@@ -44,6 +45,6 @@ public class HealthController : MonoBehaviour
 	public void Death ()
 	{
 		currentHP = maxHP;
-		transform.position = spawner.transform.position;
+        GameController.instance.GetComponent<RespawnManager>().AddPlayer(transform, 3);
 	}
 }

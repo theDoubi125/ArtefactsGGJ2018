@@ -9,33 +9,33 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1904889267598766}
+  m_RootGameObject: {fileID: 1630649840510278}
   m_IsPrefabParent: 1
---- !u!1 &1904889267598766
+--- !u!1 &1630649840510278
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4164606638699294}
-  - component: {fileID: 114828832905827016}
-  - component: {fileID: 114948714020828224}
-  - component: {fileID: 114988868585894556}
-  - component: {fileID: 114058137451610072}
+  - component: {fileID: 4967356985737990}
+  - component: {fileID: 114260612480980760}
+  - component: {fileID: 114311193643700482}
+  - component: {fileID: 114218574626507406}
+  - component: {fileID: 114407564018608236}
   m_Layer: 0
-  m_Name: ChargeGun
+  m_Name: Grenade Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
---- !u!4 &4164606638699294
+--- !u!4 &4967356985737990
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1904889267598766}
+  m_GameObject: {fileID: 1630649840510278}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -43,55 +43,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114058137451610072
+--- !u!114 &114218574626507406
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1904889267598766}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14c1ce7a4ad71b64caf1bd60c1782b2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actionToBind: 0
-  throwOnShoot: 0
-  projectilePrefab: {fileID: 4253109943477450, guid: 2fb16f7075fcd6d429e915005ca09d33,
-    type: 2}
-  precision: 10
-  throwDistance: 2
-  projectilePerShot: 1
-  chargeDuration: 3
-  throwAngle: 10
---- !u!114 &114828832905827016
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1904889267598766}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac36da749ae2b55438c4e2658c633e79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114948714020828224
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1904889267598766}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 668463f97de38924fb37f3ea193520dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxAmmo: 5000
---- !u!114 &114988868585894556
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1904889267598766}
+  m_GameObject: {fileID: 1630649840510278}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3208387a7f0449644b0ac3fd75b66620, type: 3}
@@ -105,3 +62,46 @@ MonoBehaviour:
   throwDistance: 2
   projectilePrefab: {fileID: 4907201012940210, guid: 225a70ba668fa4c419d01ec6decdd9bc,
     type: 2}
+--- !u!114 &114260612480980760
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1630649840510278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac36da749ae2b55438c4e2658c633e79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114311193643700482
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1630649840510278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 668463f97de38924fb37f3ea193520dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAmmo: 5000
+--- !u!114 &114407564018608236
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1630649840510278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14c1ce7a4ad71b64caf1bd60c1782b2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionToBind: 0
+  throwOnShoot: 0
+  projectilePrefab: {fileID: 4100160358845728, guid: eaec59a16f488d84a9eab0232db7be56,
+    type: 2}
+  precision: 0
+  throwDistance: 2
+  projectilePerShot: 1
+  chargeDuration: 3
+  throwAngle: 30
