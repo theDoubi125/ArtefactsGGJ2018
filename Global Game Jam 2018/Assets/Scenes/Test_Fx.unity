@@ -233,6 +233,18 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 320093980247892278, guid: a3601f4a7993b6b4888969fe020c2c0e,
+        type: 2}
+      propertyPath: m_PlayableAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 953cbee174b4420498384d6bb05da510,
+        type: 2}
+    - target: {fileID: 320093980247892278, guid: a3601f4a7993b6b4888969fe020c2c0e,
+        type: 2}
+      propertyPath: m_SceneBindings.Array.data[0].key
+      value: 
+      objectReference: {fileID: 114429410463682436, guid: 953cbee174b4420498384d6bb05da510,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a3601f4a7993b6b4888969fe020c2c0e, type: 2}
   m_IsPrefabParent: 0
