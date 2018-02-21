@@ -40,7 +40,7 @@ public class CrateGenerator : MonoBehaviour
     {
         if (bounceCount >= maxBounce)
         {
-            Transform crateInstance = Instantiate<Transform>(cratePrefab, transform.position, transform.rotation);
+			Transform crateInstance = Instantiate<Transform>(cratePrefab, transform.position, Quaternion.identity);
             inventory.TransferContentTo(crateInstance.GetComponentInChildren<Inventory>());
             Destroy(transform.parent.gameObject);
         }
