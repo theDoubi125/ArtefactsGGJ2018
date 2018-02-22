@@ -28,12 +28,12 @@ public class CrateGenerator : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        PlayerController player = other.GetComponentInParent<PlayerController>();
+        /*PlayerController player = other.GetComponentInParent<PlayerController>();
         if (player != null)
         {
             inventory.TransferContentTo(player.GetComponentInChildren<Inventory>());
             Destroy(body.gameObject);
-        }
+        }*/
     }
 
     void OnBounce()
