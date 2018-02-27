@@ -62,7 +62,7 @@ public class MachineGun : MonoBehaviour
 
     private void Shoot()
     {
-        if (magazine.HasAmmo())
+		if ((magazine.HasAmmo() || throwOnShoot))
         {
 			for (int i = 0; i < projectilePerShoot; i++)
 			{

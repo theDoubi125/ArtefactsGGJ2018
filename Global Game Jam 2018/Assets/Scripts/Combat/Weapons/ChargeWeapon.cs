@@ -75,7 +75,7 @@ public class ChargeWeapon : MonoBehaviour
 	private List<Transform> Shoot()
 	{
 		List<Transform> result = new List<Transform>();
-		if (magazine.HasAmmo())
+		if ((magazine.HasAmmo() || throwOnShoot))
 		{
 			for (int i = 0; i < projectilePerShot; i++)
 			{

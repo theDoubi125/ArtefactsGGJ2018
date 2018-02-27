@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43680233, g: 0.48442894, b: 0.56468374, a: 1}
+  m_IndirectSpecularColor: {r: 0.43680242, g: 0.48442918, b: 0.56468457, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -88,7 +88,6 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaDirect: 0.5
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
-    m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -4587,7 +4586,6 @@ Camera:
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -5301,12 +5299,12 @@ Prefab:
     - target: {fileID: 224838523641922776, guid: 22869c6cc9539db418735941b6e0ec92,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 574
       objectReference: {fileID: 0}
     - target: {fileID: 224838523641922776, guid: 22869c6cc9539db418735941b6e0ec92,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 280
       objectReference: {fileID: 0}
     - target: {fileID: 224838523641922776, guid: 22869c6cc9539db418735941b6e0ec92,
         type: 2}
@@ -5637,8 +5635,8 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 0.88235295, g: 0.89290065, b: 1, a: 1}
-  m_Intensity: 12
-  m_Range: 20
+  m_Intensity: 3.88
+  m_Range: 50.85942
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -5658,7 +5656,7 @@ Light:
     m_Bits: 4294967295
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
+  m_BounceIntensity: 3.3
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -5671,7 +5669,7 @@ Transform:
   m_GameObject: {fileID: 2042379361}
   m_LocalRotation: {x: -0, y: 0.9999999, z: -0, w: 0.00048905605}
   m_LocalPosition: {x: -0.00088030077, y: 15.53, z: 0.8999995}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.0420579, y: 1.0420588, z: 1.0420588}
   m_Children: []
   m_Father: {fileID: 1744208410}
   m_RootOrder: 10

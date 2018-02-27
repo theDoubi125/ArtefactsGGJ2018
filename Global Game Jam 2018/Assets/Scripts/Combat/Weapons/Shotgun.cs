@@ -40,7 +40,7 @@ public class Shotgun : MonoBehaviour
 
 	private void AttackPressed()
 	{
-		if (magazine.HasAmmo() && fireTime > fireRate)
+		if ((magazine.HasAmmo() || throwOnShoot) && fireTime > fireRate)
 		{
 			for(int i=0; i<bulletCount; i++)
 				Shoot ();
