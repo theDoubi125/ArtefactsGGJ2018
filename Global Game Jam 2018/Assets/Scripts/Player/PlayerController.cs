@@ -122,14 +122,17 @@ public class PlayerController : MonoBehaviour
 
             animationController.SetSpeedRatio(body.velocity.magnitude / maxSpeed);
         }
+
+        if(Input.GetAxis(GetPlayerInputPrefix() + "Action1")  != 0)
+            Debug.Log(Input.GetAxis(GetPlayerInputPrefix() + "Action1"));
         
-        if (Input.GetAxis(GetPlayerInputPrefix() + "Action1") > -InputThreshold && isThrowPressed)
+        if (Input.GetAxis(GetPlayerInputPrefix() + "Action1") < InputThreshold && isThrowPressed)
         {
             isThrowPressed = false;
             if (OnInputReleased != null)
                 OnInputReleased(InputType.Throw);
         }
-        if (Input.GetAxis(GetPlayerInputPrefix() + "Action1") < -InputThreshold && !isThrowPressed)
+        if (Input.GetAxis(GetPlayerInputPrefix() + "Action1") > InputThreshold && !isThrowPressed)
         {
             isThrowPressed = true;
             if (OnInputPressed != null)

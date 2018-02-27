@@ -22,6 +22,7 @@ public class ChargeWeapon : MonoBehaviour
 
 	public float throwAngle = 10;
 
+    public float chargeRatio { get { if(isCharging) return charge; return 0; } }
 
 	void OnEnable()
 	{
