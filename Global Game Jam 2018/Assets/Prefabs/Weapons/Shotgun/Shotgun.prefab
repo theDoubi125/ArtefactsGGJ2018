@@ -60,7 +60,7 @@ MonoBehaviour:
   precision: 20
   bulletCount: 5
   throwDistance: 2
-  projectilePrefab: {fileID: 4590522593347866, guid: 9b00ffc8a46f33b41b261f8bb0d43db8,
+  projectilePrefab: {fileID: 4363218453415544, guid: 4beff3b66d756f94bb636a3ae84fe007,
     type: 2}
 --- !u!114 &114109881561005934
 MonoBehaviour:
@@ -73,7 +73,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 668463f97de38924fb37f3ea193520dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAmmo: 5000
+  maxAmmo: 10
 --- !u!114 &114202606981328056
 MonoBehaviour:
   m_ObjectHideFlags: 1

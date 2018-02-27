@@ -54,7 +54,7 @@ GameObject:
   - component: {fileID: 4590522593347866}
   - component: {fileID: 114394993500364824}
   m_Layer: 0
-  m_Name: Test Bullet 2
+  m_Name: Machinegun Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -143,7 +143,7 @@ MonoBehaviour:
     type: 2}
   trailPrefab: {fileID: 4533631953155604, guid: f8f2562f6c4c6934faaa0e568f6ef51d,
     type: 2}
-  damage: 10
+  damage: 5
 --- !u!135 &135617104608454126
 SphereCollider:
   m_ObjectHideFlags: 1
